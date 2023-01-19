@@ -1,0 +1,41 @@
+{
+  "title": "碳排放管理",
+  "table": {
+    "electricity": {
+      "header": "用電量 (度)",
+      "total": "總用電 (a)",
+      "sun": "太陽能發電 (b)",
+      "tRec": "綠證 (c)",
+      "carbon": "碳排放用電 (d=a-b-c)"
+    },
+    "carbonIndex": {
+      "header": "碳排放係數 (e)",
+      "unit": "(公噸CO₂e/千度)"
+    },
+    "carbon": {
+      "header": "碳排放 (公噸)",
+      "scope1": "Scope1碳排 (f)",
+      "scope2": "Scope2碳排 (g=d*e/1000)",
+      "currYear": "{{currYear}}碳排 (h=f+g)",
+      "baseYear": "{{baseYear}}碳排 (i)",
+      "delta": "增減率 (h/i-1)",
+      "target": "碳排目標 (j=i*{{ratio}})"
+    },
+    "target": {
+      "header": "碳排抵扣綠證目標",
+      "unit": "(h-i*{{ratio}})*1000/e"
+    },
+    "carbonTax": {
+      "header": "需支付碳稅",
+      "unit": "(h-j)*k"
+    },
+    "pricing": {
+      "header": "緯創內部碳定價",
+      "unit": "(k)(EUR)"
+    }
+  },
+  "history": {
+    "carbon": "碳排放 (公噸)",
+    "delta": "增減率 *"
+  }
+}

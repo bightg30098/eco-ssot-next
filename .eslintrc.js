@@ -1,8 +1,4 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: './tsconfig.json',
-  },
   plugins: ['@typescript-eslint', 'import', 'tailwindcss'],
   extends: ['next/core-web-vitals', 'plugin:@typescript-eslint/recommended', 'plugin:tailwindcss/recommended'],
   rules: {

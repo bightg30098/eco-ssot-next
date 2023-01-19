@@ -1,0 +1,101 @@
+{
+  "backDesc": "返回上一頁",
+  "aspDesc": "* 還原ASP影響後{{type}} = 當年 YTM 實際{{type}} / (當年 YTM 出貨量 * 前一年 YTM ASP)",
+  "aspReduction": "還原ASP影響 *",
+  "missingTargetDesc": "達標/未達標說明",
+  "overdue": "已過期",
+  "aboutToOverdue": "即將過期",
+  "addDesc": "新增說明",
+  "cancelAdd": "取消新增",
+  "addImprovement": "點擊新增改善措施",
+  "hideItems": "隱藏項目",
+  "showItems": "顯示隱藏",
+  "baselineYear": "基準年",
+  "lastYear": "去年",
+  "currYear": "今年",
+  "last_comparison": "對比去年",
+  "base_comparison": "對比基準年",
+  "electricity": {
+    "type": "用電",
+    "title": "十億營業額用電 : 用電密集度分析",
+    "chartTitle": "用電密集度對比",
+    "tableTitle": "影響用電",
+    "electricity": {
+      "title": "用電量",
+      "unit": "千瓦時"
+    },
+    "revenue": {
+      "title": "營業額",
+      "unit": "十億台幣"
+    },
+    "electricityIntensity": {
+      "title": "用電密集度",
+      "unit": "度/十億台幣"
+    },
+    "shipment": {
+      "title": "出貨量",
+      "unit": "千片"
+    },
+    "asp": {
+      "unit": "千台幣/片"
+    }
+  },
+  "waste": {
+    "type": "廢棄物",
+    "title": "廢棄物密集度 : 廢棄物密集度分析",
+    "chartTitle": "廢棄物密集度對比",
+    "tableTitle": "影響廢棄物密度",
+    "waste": {
+      "title": "廢棄物總量",
+      "unit": "公噸"
+    },
+    "revenue": {
+      "title": "營業額",
+      "unit": "十億台幣"
+    },
+    "wasteDensity": {
+      "title": "廢棄物密集度",
+      "unit": "公噸/十億台幣"
+    },
+    "shipment": {
+      "title": "出貨量",
+      "unit": "千片"
+    },
+    "asp": {
+      "unit": "千台幣/片"
+    }
+  },
+  "water": {
+    "type": "用水",
+    "title": "十億營業額用水 : 用水密集度分析",
+    "chartTitle": "用水密集度對比",
+    "tableTitle": "影響用水",
+    "water": {
+      "title": "用水量",
+      "unit": "公噸"
+    },
+    "revenue": {
+      "title": "營業額",
+      "unit": "十億台幣"
+    },
+    "waterIntensity": {
+      "title": "用水密集度",
+      "unit": "公噸/十億台幣"
+    },
+    "shipment": {
+      "title": "出貨量",
+      "unit": "千片"
+    },
+    "asp": {
+      "unit": "千台幣/片"
+    }
+  },
+  "table": {
+    "strategy": "改善措施",
+    "category": "措施類別",
+    "expect": "預計效益",
+    "contribution": "貢獻度",
+    "finishDate": "完成日期",
+    "done": "完成"
+  }
+}

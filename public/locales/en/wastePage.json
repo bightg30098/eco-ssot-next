@@ -1,0 +1,53 @@
+{
+  "title": "Waste Generation Intensity",
+  "subtitle": "Waste Analysis",
+  "desc": "* General*¹ = Incineration & Landfill, General*¹ = Others & Food Waste",
+  "table": {
+    "nonRecyclable": {
+      "header": "Non-recyclable Waste Weight (Ton)",
+      "normal": "General *¹",
+      "harmful": "Hazardous"
+    },
+    "recyclable": {
+      "header": "Recyclable Waste Weight (Ton)",
+      "normal": "General *²",
+      "waste": "Recyclable(Compost & Recycling)"
+    },
+    "revenue": {
+      "header": "Revenue of YTM"
+    },
+    "waste": {
+      "header": "Waste Generation Intensity (ton/billion NTD)",
+      "delta": "Gap ( ({{currYear}}-{{baseYear}}) / {{baseYear}} )"
+    },
+    "recycleRate": "Waste Recycling Rate"
+  },
+  "subTable": {
+    "generalWaste": {
+      "header": "General Waste",
+      "subHeader":"",
+      "unit":"(Ton)"
+    },
+    "manpower": "Manpower",
+    "food":  "Food waste / person(kg)",
+    "recyclable": {
+      "header": "Recyclable Waste",
+      "subHeader":"",
+      "unit":"(Ton)"
+    },
+    "production": "Equivalent Production(unit)",
+    "asp": "Equivalent Recyclable Waste / 1000 unit (Ton)"
+  },
+  "upload": {
+    "uploadWaste": "Import Data of Waste",
+    "selectExcel": "Select Excel File"
+  },
+  "history": {
+    "waste": "Waste Generation Intensity (ton/billion NTD)",
+    "delta": "Gap *",
+    "weight": "Weight",
+    "wasteAbbr": "Intensity",
+    "wasteDesc": "* Intensity : Waste Generation Intensity (ton/billion NTD); Weight : Waste Weight (ton)",
+    "gapDesc": "* Gap = (Current year − Base year) / Base year"
+  }
+}

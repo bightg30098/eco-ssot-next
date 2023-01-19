@@ -1,0 +1,137 @@
+{
+  "nav": {
+    "goal": "年度目標維護",
+    "decarbonization": "脫碳目標設定",
+    "dataStatus": "資料更新狀態",
+    "pic": "資料維護PIC",
+    "csrAndFemStatus": "FEM & CSR數值狀態",
+    "changelog": "版本異動",
+    "revenue":  "營收下載",
+    "permission": "權限名單",
+    "plantChangelog": "廠區異動"
+   
+  },
+  "yearGoal": {
+    "title": "年度目標",
+    "table": {
+      "category": "項目",
+      "baseYear": "基準年",
+      "target": "Target 訂定標準(對比基準年)",
+      "unit": "單位"
+    }
+  },
+  "carbonIndex": {
+    "title": "碳排放係數",
+    "unit": "(公噸CO₂e/千度)",
+    "table": {
+      "amount": "碳排放係數",
+      "lastUpdateTime": "更新時間"
+    }
+  },
+  "tRec": {
+    "title": "綠證",
+    "table": {
+      "buyDate": "購買日期",
+      "unit": "合計度數 (千度)",
+      "buyArea": "購買地區",
+      "buyUnit": "購買度數 (千度)",
+      "price": "購買價格",
+      "currency": "金額幣別",
+      "tRec": "綠證"
+    }
+  },
+  "dataStatus": {
+    "title": "下表為{{currMonthNum}}月資料狀態",
+    "subTitle": "預計下次更新: {{nextMonth}}/{{nextDay}}",
+    "csrTitle": "(CSR為 {{csrMonthNum}}月)",
+    "csrDesc": "* CSR 更新日期 : 每月最後一日",
+    "noData": "無資料",
+    "updated": "已更新",
+    "notUpdated": "未更新",
+    "incorrectData": "資料不完整",
+    "importMonthlyReport": "匯入月報表",
+    "table": {
+      "autoSync": "自動同步",
+      "manualSync": "手動更新",
+      "benefit": "節電量",
+      "OPMRevenue": "營收",
+      "OPMManual": "人力",
+      "OPMShipment": "出貨量",
+      "FEMElectric": "智慧電表",
+      "FEMWater": "智慧水表",
+      "FEMSolar": "太陽能",
+      "CSRElectric": "電費帳單 / 差異",
+      "CSRWater": "水費帳單 / 差異",
+      "DPMEquProduction": "約當生產量",
+      "waste": "廢棄物",
+      "wasteWeight": "廢棄物重量"
+    }
+  },
+  "pic": {
+    "title": "資料維護 PIC",
+    "table": {
+      "waste": "廢棄物",
+      "manualSync": "手動更新",
+      "remark": "備註",
+      "revenueAndShipment": "用水用電",
+      "airCompressor": "空壓設備",
+      "revenue": "營收下載",
+      "carbon": "碳足跡"
+    }
+  },
+  "csr": {
+    "title": "FEM & CSR數值狀態 (每月最後一日更新)",
+    "desc": "* 差異 = ( FEM - CSR ) / CSR * 100%",
+    "table": {
+      "femElectricitySmartMeter": "FEM 智慧電表",
+      "csrElectricityBill": "CSR 電費帳單",
+      "femWaterSmartMeter": "FEM 智慧水表",
+      "csrWaterBill": "CSR 水費帳單",
+      "gap": "差異 *",
+      "description": "描述",
+      "edit": "編輯",
+      "period": "區間"
+    }
+  },
+  "changelog": {
+    "title": "版本異動",
+    "date":"日期",
+    "version":"版號",
+    "updateContent":"更新內容",
+    "item":"項目",
+    "introduce":"新功能介紹",
+    "pages":"所在說明書頁數",
+    "2.0.0": "v2.0.0 正式上線",
+    "2.0.1": "整合 Google Analytics",
+    "2.0.2": "新增英文版使用手冊",
+    "2.0.3": "廠區選取功能 & Target拆分到廠",
+    "2.0.4": "新增使用者名單",
+    "2.0.5": "新增空壓設備計算機",
+    "2.0.6": "新增用電指標",
+    "3.0.0": "v3.0.0 正式上線"
+  },
+  "revenue": {
+    "title": "營收下載",
+    "total": "總計"
+  },
+  "permission": {
+    "permissionList": "權限名單",
+    "checkingPermissionListOfSiteP8Data": "P8廠數據可查看權限名單",
+    "editingPermissionListOfSettings": "後台參數可設定權限名單",
+    "listOfDevelopmentTeam": "開發群組名單",
+    "userList": "一般使用者名單"
+  },
+  "plantChangelog": {
+    "title": "廠區異動",
+    "changeType": "異動類型",
+    "after": "異動後",
+    "description": "說明",
+    "changeDate": "異動日期"
+  }, "decarbonization": {
+      "title": "脫碳目標設定",
+      "category": "項目",
+      "base": "基礎",
+      "detail": "詳情",
+    "year": " 年"
+}
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Renewable Energy",
+  "ratioDesc": "",
+  "table": {
+    "electricity": {
+      "header": "Electricity Consumption (kWh)",
+      "total": "Total (a)",
+      "sun": "Solar Power (b)",
+      "greenElectricity": "Purchase Green electricity",
+      "greenEnergyInvestment": "Green energy investment",
+      "tRec": "REC (c)"
+    },
+    "ratio": {
+      "header": "Percentage"
+    },
+    "tRec": {
+      "header": "REC Target for Renewable Energy (kWh)"
+    },
+    "roof": {
+      "area": "Usable Roof Area (M²)",
+      "structure": "Roof Structure (RC / Steel Structure)"
+    }
+  },
+  "history": {
+    "desc": "* Percentage = Renewable Energy / Total",
+    "electricity": "Total (kWh)",
+    "ratio": "Percentage *"
+  }
+}

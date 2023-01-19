@@ -1,3 +1,67 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  @apply bg-gray-900 text-gray-50;
+}
+
+@screen sm {
+  html {
+    font-size: 10px;
+  }
+}
+
+@screen md {
+  html {
+    font-size: 10.5px;
+  }
+}
+
+@screen lg {
+  html {
+    font-size: 11px;
+  }
+}
+
+@screen xl {
+  html {
+    font-size: 12px;
+  }
+}
+
+@screen 2xl {
+  html {
+    font-size: 13px;
+  }
+}
+
+@screen 1k {
+  html {
+    font-size: 15px;
+  }
+}
+
+@screen 2k {
+  html {
+    font-size: 20px;
+  }
+}
+
+@screen 4k {
+  html {
+    font-size: 30px;
+  }
+}
+
+@screen 5k {
+  html {
+    font-size: 40px;
+  }
+}
+
+@screen 8k {
+  html {
+    font-size: 60px;
+  }
+}

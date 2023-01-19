@@ -1,0 +1,57 @@
+{
+  "buttonGroup": {
+    "currentYear": "Current Year",
+    "historyYear": "History Years",
+    "baseline": "Baseline",
+    "prediction": "Prediction",
+    "powerSaving": "Energy Saving",
+    "water": "Water",
+    "electricity": "Electricity",
+    "recommendation": "Efficiency",
+    "maintenance": "Maintenance"
+  },
+  "selectLabel": {
+    "searchYear": "Year",
+    "searchMonth": "Month",
+    "dimension": "Dimension",
+    "predictionMonth": "Prediction Month",
+    "copyToNewYear": "Copy To New Year"
+  },
+  "button": {
+    "search": "Search",
+    "logout": "Logout",
+    "save": "Save",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "add": "Add"
+  },
+  "toast": {
+    "uploadSuccess": "Upload success"
+  },
+  "modal": {
+    "sureToDelete": "Sure to delete？",
+    "incompleteContent": "Input content incomplete",
+    "allColumnRequiredExceptCloseDate": "Please make sure all columns are filled in, except for “Close date” column.",
+    "inputValueError": "Input value error",
+    "checkInputRules": "Make sure all input values meet the following criteria:",
+    "goalRule1": "1. Baseline year must be less than or equal to the query year.",
+    "goalRule2": "2. Target definition must be less than or equal to 100%."
+  },
+  "legend": {
+    "meetTarget": "Meet Target",
+    "meetTargetYet": "Meet Target Yet",
+    "missTarget": "Miss Target",
+    "missingData": "Missing Data",
+    "noData": "No Data"
+  },
+  "electricityOptions": {
+    "null": "",
+    "basic": "Basic",
+    "air_condition": "Air Condition",
+    "air_compressor": "Air Compressor",
+    "air_production": "Production"
+  },
+  "upload": {
+    "selectExcel": "Select Excel File"
+  }
+}
