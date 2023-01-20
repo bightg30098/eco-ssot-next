@@ -31,6 +31,7 @@ function RouterEventWrapper({ children, onStart = () => {}, onComplete = () => {
 
   useEffect(() => {
     let timeout: NodeJS.Timeout
+
     const start = () => {
       clearTimeout(timeout)
       timeout = setTimeout(onStart, 200)

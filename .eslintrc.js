@@ -4,6 +4,13 @@ module.exports = {
   rules: {
     '@typescript-eslint/consistent-type-imports': 'warn',
     '@typescript-eslint/no-empty-function': 'off',
+    'no-else-return': 'warn',
+    'padding-line-between-statements': [
+      'warn',
+      { blankLine: 'always', prev: ['block-like', 'multiline-const', 'multiline-let'], next: '*' },
+      { blankLine: 'always', prev: 'import', next: ['export', 'block-like', 'const', 'let', 'function'] },
+      { blankLine: 'always', prev: '*', next: ['block-like'] },
+    ],
   },
   overrides: [
     {
