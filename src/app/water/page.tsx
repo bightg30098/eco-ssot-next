@@ -1,3 +1,5 @@
+import TablePage from '../TablePage'
+
 export default function Water() {
-  return <main></main>
+  return <TablePage title="Water"></TablePage>
 }

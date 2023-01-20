@@ -1,7 +1,6 @@
 import '@/styles/globals.css'
 
-import Header from '@/components/Header'
-
+import Header from './Header'
 import RootLayoutClient from './layout.client'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -14,8 +13,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head />
       <body>
         <RootLayoutClient>
-          <Header />
-          {children}
+          <div className="flex h-screen w-screen flex-col overflow-hidden">
+            <Header />
+            {children}
+          </div>
         </RootLayoutClient>
       </body>
     </html>

@@ -1,3 +1,5 @@
+import TablePage from '../TablePage'
+
 export default function UnitElectricity() {
-  return <main></main>
+  return <TablePage title="Unit Electricity"></TablePage>
 }

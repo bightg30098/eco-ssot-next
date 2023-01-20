@@ -17,13 +17,13 @@ export default function RootLayoutClient({ children }: { children: React.ReactNo
   const onStart = useCallback(() => nprogress.start(), [])
   const onComplete = useCallback(() => nprogress.done(), [])
   return (
-    <RouterEventWrapper onStart={onStart} onComplete={onComplete}>
+    <RouterEvent onStart={onStart} onComplete={onComplete}>
       {children}
-    </RouterEventWrapper>
+    </RouterEvent>
   )
 }
 
-function RouterEventWrapper({ children, onStart = () => {}, onComplete = () => {} }: Props) {
+function RouterEvent({ children, onStart = () => {}, onComplete = () => {} }: Props) {
   const [isChanging, setIsChanging] = useState(false)
   const pathname = usePathname()
   const searchParams = useSearchParams()

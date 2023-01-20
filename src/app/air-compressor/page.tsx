@@ -1,3 +1,5 @@
+import TablePage from '../TablePage'
+
 export default function AirCompressor() {
-  return <main></main>
+  return <TablePage title="Air Compressor"></TablePage>
 }
