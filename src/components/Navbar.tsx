@@ -10,8 +10,8 @@ import { routes } from '@/router/routes'
 export default function Navbar() {
   const _routes = useMemo(() => routes(), [])
   return (
-    <nav>
-      <ul className="flex space-x-4">
+    <nav className="px-4">
+      <ul className="flex space-x-2">
         {_routes.map(({ path, pathAlias, label }) => (
           <NavLink
             href={path}

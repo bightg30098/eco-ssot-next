@@ -2,6 +2,8 @@ import '@/styles/globals.css'
 
 import Header from '@/components/Header'
 
+import RootLayoutClient from './layout.client'
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -11,8 +13,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       */}
       <head />
       <body>
-        <Header />
-        {children}
+        <RootLayoutClient>
+          <Header />
+          {children}
+        </RootLayoutClient>
       </body>
     </html>
   )
