@@ -16,6 +16,7 @@ type Props = {
 export default function RootLayoutClient({ children }: { children: React.ReactNode }) {
   const onStart = useCallback(() => nprogress.start(), [])
   const onComplete = useCallback(() => nprogress.done(), [])
+
   return (
     <RouterEvent onStart={onStart} onComplete={onComplete}>
       {children}
@@ -42,9 +43,7 @@ function RouterEvent({ children, onStart = () => {}, onComplete = () => {} }: Pr
       nprogress.done()
     }
 
-    if (isChanging) {
-      start()
-    }
+    if (isChanging) start()
 
     return () => {
       done()

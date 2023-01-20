@@ -24,6 +24,7 @@ export default function NavLink({ children, href, hrefAlias, className, ...props
   )
 
   const startChange = useContext(RouterContext)
+
   return (
     <Link
       {...props}
@@ -32,9 +33,7 @@ export default function NavLink({ children, href, hrefAlias, className, ...props
       onClick={(e) => {
         props.onClick?.(e)
 
-        if (href !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
-          startChange()
-        }
+        if (href !== `${window.location.pathname}${window.location.search}${window.location.hash}`) startChange()
       }}
     >
       {typeof children === 'function' ? children({ isActive }) : children}

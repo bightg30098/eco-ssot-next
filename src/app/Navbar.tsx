@@ -9,6 +9,7 @@ import { routes } from '@/router/routes'
 
 export default function Navbar() {
   const _routes = useMemo(() => routes(), [])
+
   return (
     <nav className="px-4">
       <ul className="flex space-x-2">

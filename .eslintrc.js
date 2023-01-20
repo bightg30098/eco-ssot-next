@@ -5,12 +5,15 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': 'warn',
     '@typescript-eslint/no-empty-function': 'off',
     'no-else-return': 'warn',
+    'react/display-name': 'off',
     'padding-line-between-statements': [
       'warn',
       { blankLine: 'always', prev: ['block-like', 'multiline-const', 'multiline-let'], next: '*' },
       { blankLine: 'always', prev: 'import', next: ['export', 'block-like', 'const', 'let', 'function'] },
       { blankLine: 'always', prev: '*', next: ['block-like'] },
     ],
+    curly: ['warn', 'multi'],
+    'newline-before-return': 'warn',
   },
   overrides: [
     {
