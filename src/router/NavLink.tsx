@@ -5,7 +5,7 @@ import { useMemo, useContext } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import RouterContext from '@/router/RouterContext'
+import RouterContext from './RouterContext'
 
 import type { LinkProps } from 'next/link'
 

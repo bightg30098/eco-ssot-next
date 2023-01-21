@@ -2,19 +2,19 @@
 
 import { useMemo } from 'react'
 
-import { NumericFormat as NF, PatternFormat as PF } from 'react-number-format'
+import { NumericFormat as _NumericFormat, PatternFormat as _PatternFormat } from 'react-number-format'
 
-import type { NumericFormatProps as NFProps, PatternFormatProps as PFProps } from 'react-number-format'
+import type { NumericFormatProps as _NumericFormatProps, PatternFormatProps as _PFProps } from 'react-number-format'
 
 export type NumericFormatProps = {
   precision?: number
   unit?: number
-} & NFProps
+} & _NumericFormatProps
 
 export type PatternFormatProps = {
   precision?: number
   unit?: number
-} & PFProps
+} & _PFProps
 
 export function NumericFormat({
   value,
@@ -34,7 +34,7 @@ export function NumericFormat({
   }, [value, unit, defaultValue])
 
   return (
-    <NF
+    <_NumericFormat
       displayType={displayType}
       decimalScale={precision}
       defaultValue={defaultValue}
@@ -47,5 +47,5 @@ export function NumericFormat({
 }
 
 export function PatternFormat({ displayType = 'text', ...props }: PatternFormatProps) {
-  return <PF displayType={displayType} {...props} />
+  return <_PatternFormat displayType={displayType} {...props} />
 }

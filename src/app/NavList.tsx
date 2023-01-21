@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 
 import clsx from 'clsx'
 
-import NavLink from '@/headless/NavLink'
+import NavLink from '@/router/NavLink'
 import { routes } from '@/router/routes'
 
 export default function NavList() {

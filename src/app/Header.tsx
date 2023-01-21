@@ -1,5 +1,5 @@
 import Logo from '@/components/logo/Logo'
-import NavLink from '@/headless/NavLink'
+import NavLink from '@/router/NavLink'
 
 import NavList from './NavList'
 
