@@ -32,8 +32,8 @@ export default function NavLink({ children, href, hrefAlias, className, ...props
       className={typeof className === 'function' ? className({ isActive }) : className}
       onClick={(e) => {
         props.onClick?.(e)
-
-        if (href !== `${window.location.pathname}${window.location.search}${window.location.hash}`) startChange()
+        const { pathname, search, hash } = window.location
+        if (href !== `${pathname}${search}${hash}`) startChange()
       }}
     >
       {typeof children === 'function' ? children({ isActive }) : children}

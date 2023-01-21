@@ -7,7 +7,7 @@ import clsx from 'clsx'
 import NavLink from '@/headless/NavLink'
 import { routes } from '@/router/routes'
 
-export default function Navbar() {
+export default function NavList() {
   const _routes = useMemo(() => routes(), [])
 
   return (

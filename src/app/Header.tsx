@@ -1,7 +1,7 @@
-import Logo from '@/components/Logo'
+import Logo from '@/components/logo/Logo'
 import NavLink from '@/headless/NavLink'
 
-import Navbar from './Navbar'
+import NavList from './NavList'
 
 export default function Header() {
   return (
@@ -11,7 +11,7 @@ export default function Header() {
         <div className="text-lg font-medium">ECO SSOT NEXT</div>
         <div className="text-sm text-gray-300">v4.1.0</div>
       </NavLink>
-      <Navbar />
+      <NavList />
     </div>
   )
 }

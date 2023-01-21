@@ -18,4 +18,6 @@ export type Overview = {
   ASPWeight: number
   ASPGradient: number
   plants: Overview[]
+} & {
+  isFooter?: boolean
 }

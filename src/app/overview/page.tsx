@@ -9,7 +9,7 @@ export default async function Overview() {
 
   return (
     <TablePage title="Overview">
-      {overview?.data && latestDate?.data && <Table data={overview.data} latestDate={latestDate.data} data-superjson />}
+      {overview?.data && latestDate?.data && <Table data={overview.data} latestDate={latestDate.data} />}
     </TablePage>
   )
 }
