@@ -86,7 +86,7 @@ function BaseTable<T>({ table }: TableProps<T>) {
             )
           })}
         </tbody>
-        <tfoot className="sticky bottom-0 bg-primary-900">
+        <tfoot className="sticky bottom-0 z-10 bg-primary-900">
           {table.getFooterGroups().map((footerGroup) => {
             return (
               <tr key={footerGroup.id}>
