@@ -5,6 +5,8 @@ import { useCallback } from 'react'
 import { flexRender, getCoreRowModel, getExpandedRowModel, useReactTable } from '@tanstack/react-table'
 import clsx from 'clsx'
 
+import OverlayScrollbarsComponent from '@/lib/overlayscrollbars-react'
+
 import type { Table, ColumnDef, ColumnDefBase, Header } from '@tanstack/react-table'
 
 type TableProps<T> = {
@@ -23,8 +25,8 @@ function BaseTable<T>({ table }: TableProps<T>) {
   const isHeaderGroup = useCallback((header: Header<T, unknown>) => header.subHeaders.length > 0, [])
 
   return (
-    <div className="flex flex-col overflow-auto rounded-t-lg shadow-lg">
-      <table className="border-separate border-spacing-0 text-right">
+    <OverlayScrollbarsComponent className="relative flex flex-col overflow-auto rounded-t-lg shadow-lg">
+      <table className="w-full border-separate border-spacing-0 text-right">
         <thead className="sticky top-0 z-10 bg-primary-800 font-medium tracking-wider">
           {table.getHeaderGroups().map((headerGroup) => {
             return (
@@ -107,7 +109,7 @@ function BaseTable<T>({ table }: TableProps<T>) {
           })}
         </tfoot>
       </table>
-    </div>
+    </OverlayScrollbarsComponent>
   )
 }
 
