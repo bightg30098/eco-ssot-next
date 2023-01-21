@@ -53,7 +53,7 @@ function BaseTable<T>({ table }: TableProps<T>) {
           })}
         </thead>
         <tbody className="bg-primary-900">
-          {table.getRowModel().rows.map((row) => {
+          {table.getRowModel().rows.map((row, i) => {
             return (
               <tr key={row.id}>
                 {row.getVisibleCells().map((cell) => {
@@ -61,7 +61,8 @@ function BaseTable<T>({ table }: TableProps<T>) {
                     <td
                       key={cell.id}
                       className={clsx(
-                        'border-b border-b-gray-500 px-4 py-2',
+                        'border-t border-t-gray-500 py-2 px-4',
+                        i === 0 && 'border-t-0',
                         cell.column.columnDef.meta?.cell?.className,
                       )}
                     >
@@ -82,7 +83,10 @@ function BaseTable<T>({ table }: TableProps<T>) {
                     <th
                       key={header.id}
                       colSpan={header.colSpan}
-                      className={clsx('p-0', header.column.columnDef.meta?.footer?.className)}
+                      className={clsx(
+                        !isHeaderGroup(header) && 'border-y-2 border-y-primary-600 px-4 py-2.5',
+                        header.column.columnDef.meta?.footer?.className,
+                      )}
                     >
                       {header.isPlaceholder ? null : flexRender(header.column.columnDef.footer, header.getContext())}
                     </th>
