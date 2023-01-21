@@ -12,8 +12,7 @@ module.exports = {
       { blankLine: 'always', prev: 'import', next: ['export', 'block-like', 'const', 'let', 'function'] },
       { blankLine: 'always', prev: '*', next: ['block-like'] },
     ],
-    curly: ['warn', 'multi'],
-    'newline-before-return': 'warn',
+    curly: ['warn', 'multi-line'],
   },
   overrides: [
     {

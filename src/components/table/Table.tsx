@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import { flexRender, getCoreRowModel, getExpandedRowModel, useReactTable } from '@tanstack/react-table'
 import clsx from 'clsx'
 
 import type { Table, ColumnDef, ColumnDefBase, Header } from '@tanstack/react-table'
@@ -25,7 +25,7 @@ function BaseTable<T>({ table }: TableProps<T>) {
   return (
     <div className="flex flex-col overflow-auto rounded-t-lg shadow-lg">
       <table className="border-separate border-spacing-0 text-right">
-        <thead className="bg-primary-800 font-medium tracking-wider">
+        <thead className="sticky top-0 z-10 bg-primary-800 font-medium tracking-wider">
           {table.getHeaderGroups().map((headerGroup) => {
             return (
               <tr key={headerGroup.id}>
@@ -35,8 +35,11 @@ function BaseTable<T>({ table }: TableProps<T>) {
                       key={header.id}
                       colSpan={header.colSpan}
                       className={clsx(
-                        'px-4',
-                        isHeaderGroup(header) ? 'pt-2.5 text-center' : 'p-2.5',
+                        header.column.columnDef.meta?.header?.isExpander
+                          ? 'p-0'
+                          : isHeaderGroup(header)
+                          ? 'px-4 pt-2.5 text-center'
+                          : 'p-2.5 px-4',
                         header.column.columnDef.meta?.header?.className,
                       )}
                     >
@@ -53,7 +56,7 @@ function BaseTable<T>({ table }: TableProps<T>) {
           })}
         </thead>
         <tbody className="bg-primary-900">
-          {table.getRowModel().rows.map((row, i) => {
+          {table.getRowModel().rows.map((row) => {
             return (
               <tr key={row.id}>
                 {row.getVisibleCells().map((cell) => {
@@ -61,8 +64,15 @@ function BaseTable<T>({ table }: TableProps<T>) {
                     <td
                       key={cell.id}
                       className={clsx(
-                        'border-t border-t-gray-500 py-2 px-4',
-                        i === 0 && 'border-t-0',
+                        'py-2',
+                        row.depth === 0 &&
+                          clsx(
+                            'border-b',
+                            row.getIsExpanded() ? 'border-b-primary-600' : 'border-b-gray-500',
+                            row.index === table.getRowModel().rows.length - 1 && 'border-b-0',
+                          ),
+                        row.depth > 0 && 'border-b border-b-primary-600 bg-primary-600/20',
+                        cell.column.columnDef.meta?.header?.isExpander ? 'px-0' : 'px-4',
                         cell.column.columnDef.meta?.cell?.className,
                       )}
                     >
@@ -74,7 +84,7 @@ function BaseTable<T>({ table }: TableProps<T>) {
             )
           })}
         </tbody>
-        <tfoot>
+        <tfoot className="sticky bottom-0 bg-primary-900">
           {table.getFooterGroups().map((footerGroup) => {
             return (
               <tr key={footerGroup.id}>
@@ -109,7 +119,10 @@ function TableWithHook<T>({ columns, data }: ColumnsDataProps<T>) {
   const table = useReactTable({
     columns,
     data,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    getSubRows: (row: any) => row.subRows,
     getCoreRowModel: getCoreRowModel(),
+    getExpandedRowModel: getExpandedRowModel(),
   })
 
   return <BaseTable table={table} />

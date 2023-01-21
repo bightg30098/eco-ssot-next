@@ -17,7 +17,5 @@ export type Overview = {
   ASPCurrentYear: number
   ASPWeight: number
   ASPGradient: number
-  plants: Overview[]
-} & {
-  isFooter?: boolean
+  plants?: Overview[]
 }

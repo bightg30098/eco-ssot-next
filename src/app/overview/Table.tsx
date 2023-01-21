@@ -3,9 +3,10 @@
 import { useMemo } from 'react'
 
 import { createColumnHelper } from '@tanstack/react-table'
+import clsx from 'clsx'
 import { nanoid } from 'nanoid'
 
-import { Table, NumericCell } from '@/components/table'
+import { Table, NumericCell, ExpandCell } from '@/components/table'
 
 import type { Overview } from './types'
 
@@ -16,12 +17,22 @@ const getColumns = ({ footer, latestDate }: { footer?: Overview; latestDate: Dat
   const lastYear = currYear - 1
 
   return [
+    columnHelper.display({
+      id: nanoid(),
+      cell: ExpandCell({ className: 'pl-4' }),
+      meta: {
+        header: { isExpander: true },
+        cell: { isExpander: true },
+      },
+    }),
     columnHelper.accessor('site', {
       header: () => <span>Site</span>,
       cell: (info) => info.getValue(),
       footer: () => <span>{footer?.site}</span>,
       meta: {
-        header: { className: '-translate-y-1/2' },
+        header: { className: clsx('-translate-y-1/2 text-center') },
+        cell: { className: clsx('text-center') },
+        footer: { className: clsx('text-center') },
       },
     }),
     columnHelper.group({
@@ -82,12 +93,12 @@ const getColumns = ({ footer, latestDate }: { footer?: Overview; latestDate: Dat
       columns: [
         columnHelper.accessor('revenueCompareYear', {
           header: () => <span>{lastYear}</span>,
-          cell: NumericCell(),
+          cell: NumericCell({ precision: 3 }),
           footer: NumericCell({ value: footer?.revenueCompareYear }),
         }),
         columnHelper.accessor('revenueCurrentYear', {
           header: () => <span>{currYear}</span>,
-          cell: NumericCell(),
+          cell: NumericCell({ precision: 3 }),
           footer: NumericCell({ value: footer?.revenueCurrentYear }),
         }),
         columnHelper.accessor('revenueWeight', {
@@ -108,12 +119,12 @@ const getColumns = ({ footer, latestDate }: { footer?: Overview; latestDate: Dat
       columns: [
         columnHelper.accessor('ASPCompareYear', {
           header: () => <span>{lastYear}</span>,
-          cell: NumericCell(),
+          cell: NumericCell({ precision: 3 }),
           footer: NumericCell({ value: footer?.ASPCompareYear }),
         }),
         columnHelper.accessor('ASPCurrentYear', {
           header: () => <span>{currYear}</span>,
-          cell: NumericCell(),
+          cell: NumericCell({ precision: 3 }),
           footer: NumericCell({ value: footer?.ASPCurrentYear }),
         }),
         columnHelper.accessor('ASPGradient', {
@@ -128,7 +139,7 @@ const getColumns = ({ footer, latestDate }: { footer?: Overview; latestDate: Dat
 
 export default function OverviewTable({ data, latestDate }: { data: Overview[]; latestDate: Date }) {
   const footer = data.at(-1)
-  const columns = useMemo(() => getColumns({ footer, latestDate: new Date(latestDate) }), [footer, latestDate])
+  const columns = useMemo(() => getColumns({ footer, latestDate }), [footer, latestDate])
 
   return <Table columns={columns} data={data.slice(0, -1)} />
 }

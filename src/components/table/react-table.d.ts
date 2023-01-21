@@ -6,18 +6,21 @@ declare module '@tanstack/table-core' {
       className?: string
       rowSpan?: number
       colSpan?: number
+      isExpander?: boolean
     }
 
     header?: {
       className?: string
       rowSpan?: number
       colSpan?: number
+      isExpander?: boolean
     }
 
     footer?: {
       className?: string
       rowSpan?: number
       colSpan?: number
+      isExpander?: boolean
     }
   }
 
