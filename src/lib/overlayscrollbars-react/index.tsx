@@ -1,6 +1,7 @@
 'use client'
 
-import clsx from 'clsx'
+import { forwardRef } from 'react'
+
 import { OverlayScrollbarsComponent as _OverlayScrollbarsComponent } from 'overlayscrollbars-react'
 
 import 'overlayscrollbars/overlayscrollbars.css'
@@ -8,14 +9,18 @@ import './overlayscrollbars.css'
 
 import type { OverlayScrollbarsComponentProps } from 'overlayscrollbars-react'
 
-export default function OverlayScrollbarsComponent(props?: OverlayScrollbarsComponentProps) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const OverlayScrollbarsComponent = forwardRef<any, OverlayScrollbarsComponentProps>((props, ref) => {
   return (
     <_OverlayScrollbarsComponent
       {...props}
-      element="div"
+      ref={ref}
+      element={props?.element ?? 'div'}
       options={{ scrollbars: { theme: 'os-theme-dark' } }}
-      className={clsx(props?.className)}
+      className={props?.className}
       defer
     />
   )
-}
+})
+
+export default OverlayScrollbarsComponent

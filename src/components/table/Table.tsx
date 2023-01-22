@@ -113,11 +113,11 @@ function BaseTable<T>({ table }: TableProps<T>) {
   )
 }
 
-function TableWithoutHook<T>({ table }: TableProps<T>) {
+function TableWithoutHooks<T>({ table }: TableProps<T>) {
   return <BaseTable table={table} />
 }
 
-function TableWithHook<T>({ columns, data }: ColumnsDataProps<T>) {
+function TableWithHooks<T>({ columns, data }: ColumnsDataProps<T>) {
   const table = useReactTable({
     columns,
     data,
@@ -131,7 +131,7 @@ function TableWithHook<T>({ columns, data }: ColumnsDataProps<T>) {
 }
 
 export default function Table<T>(props: Props<T>) {
-  if ('table' in props) return <TableWithoutHook table={props.table} />
+  if ('table' in props) return <TableWithoutHooks table={props.table} />
 
-  return <TableWithHook columns={props.columns} data={props.data} />
+  return <TableWithHooks columns={props.columns} data={props.data} />
 }
