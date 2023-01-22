@@ -1,6 +1,11 @@
 module.exports = {
   plugins: ['@typescript-eslint', 'import', 'tailwindcss'],
-  extends: ['next/core-web-vitals', 'plugin:@typescript-eslint/recommended', 'plugin:tailwindcss/recommended'],
+  extends: [
+    'next/core-web-vitals',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:tailwindcss/recommended',
+    'plugin:storybook/recommended',
+  ],
   rules: {
     '@typescript-eslint/consistent-type-imports': 'warn',
     '@typescript-eslint/no-empty-function': 'off',
@@ -8,9 +13,21 @@ module.exports = {
     'react/display-name': 'off',
     'padding-line-between-statements': [
       'warn',
-      { blankLine: 'always', prev: ['block-like', 'multiline-const', 'multiline-let'], next: '*' },
-      { blankLine: 'always', prev: 'import', next: ['export', 'block-like', 'const', 'let', 'function'] },
-      { blankLine: 'always', prev: '*', next: ['block-like'] },
+      {
+        blankLine: 'always',
+        prev: ['block-like', 'multiline-const', 'multiline-let'],
+        next: '*',
+      },
+      {
+        blankLine: 'always',
+        prev: 'import',
+        next: ['export', 'block-like', 'const', 'let', 'function'],
+      },
+      {
+        blankLine: 'always',
+        prev: '*',
+        next: ['block-like'],
+      },
     ],
     curly: ['warn', 'multi-line'],
   },
@@ -41,7 +58,12 @@ module.exports = {
             'newlines-between': 'always',
           },
         ],
-        'import/no-duplicates': ['warn', { considerQueryString: true }],
+        'import/no-duplicates': [
+          'warn',
+          {
+            considerQueryString: true,
+          },
+        ],
         'import/no-unresolved': 'error',
       },
     },
