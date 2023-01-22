@@ -1,9 +1,9 @@
-import '@/styles/globals.css'
-
 import { Toaster } from '@/lib/react-hot-toast'
 
 import Header from './Header'
 import RootLayoutClient from './layout.client'
+
+import '@/styles/globals.css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
