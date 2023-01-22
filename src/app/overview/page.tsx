@@ -1,7 +1,7 @@
 import TablePage from '../TablePage'
 import { getLatestDate } from '../services'
 
-import Table from './Table'
+import OverviewTable from './OverviewTable'
 import { getOverview } from './services'
 
 export default async function Overview() {
@@ -9,7 +9,9 @@ export default async function Overview() {
 
   return (
     <TablePage title="Overview">
-      {overview?.data && latestDate?.data && <Table data={overview.data} latestDate={latestDate.data} data-superjson />}
+      {overview?.data && latestDate?.data && (
+        <OverviewTable data={overview.data} latestDate={latestDate.data} data-superjson />
+      )}
     </TablePage>
   )
 }

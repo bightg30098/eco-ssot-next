@@ -27,7 +27,7 @@ function BaseTable<T>({ table }: TableProps<T>) {
   return (
     <OverlayScrollbarsComponent className="relative flex flex-col overflow-auto rounded-t-lg shadow-lg">
       <table className="w-full border-separate border-spacing-0 text-right">
-        <thead className="sticky top-0 z-10 bg-primary-800 font-medium tracking-wider">
+        <thead className="sticky top-0 z-10 whitespace-pre bg-primary-800 font-medium tracking-wider">
           {table.getHeaderGroups().map((headerGroup) => {
             return (
               <tr key={headerGroup.id}>

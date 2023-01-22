@@ -6,7 +6,8 @@ import { createColumnHelper } from '@tanstack/react-table'
 import clsx from 'clsx'
 import { nanoid } from 'nanoid'
 
-import { Table, NumericCell, ExpandCell } from '@/components/table'
+import { Table, ExpandCell } from '@/components/table'
+import { NumericFormat } from '@/lib/react-number-format'
 
 import type { Overview } from './types'
 
@@ -37,100 +38,100 @@ const getColumns = ({ footer, latestDate }: { footer?: Overview; latestDate: Dat
     }),
     columnHelper.group({
       id: nanoid(),
-      header: () => <span>Electricity</span>,
+      header: () => <span>Electricity Consumption (kWh)</span>,
       columns: [
         columnHelper.accessor('electricCompareYear', {
           header: () => <span>{lastYear}</span>,
-          cell: NumericCell(),
-          footer: NumericCell({ value: footer?.electricCompareYear }),
+          cell: (info) => <NumericFormat value={info.getValue()} />,
+          footer: () => <NumericFormat value={footer?.electricCompareYear} />,
         }),
         columnHelper.accessor('electricCurrentYear', {
           header: () => <span>{currYear}</span>,
-          cell: NumericCell(),
-          footer: NumericCell({ value: footer?.electricCurrentYear }),
+          cell: (info) => <NumericFormat value={info.getValue()} />,
+          footer: () => <NumericFormat value={footer?.electricCurrentYear} />,
         }),
         columnHelper.accessor('electricWeight', {
           header: () => <span>Weight</span>,
-          cell: NumericCell({ unit: 1e-2, suffix: '%' }),
-          footer: NumericCell({ value: footer?.electricWeight }),
+          cell: (info) => <NumericFormat value={info.getValue()} unit={1e-2} suffix="%" />,
+          footer: () => <NumericFormat value={footer?.electricWeight} unit={1e-2} suffix="%" />,
         }),
         columnHelper.accessor('electricGradient', {
           header: () => <span>Gap *</span>,
-          cell: NumericCell({ unit: 1e-2, suffix: '%' }),
-          footer: NumericCell({ value: footer?.electricGradient }),
+          cell: (info) => <NumericFormat value={info.getValue()} unit={1e-2} suffix="%" />,
+          footer: () => <NumericFormat value={footer?.electricGradient} unit={1e-2} suffix="%" />,
         }),
       ],
     }),
     columnHelper.group({
       id: nanoid(),
-      header: () => <span>Water</span>,
+      header: () => <span>Water Consumption (Ton)</span>,
       columns: [
         columnHelper.accessor('waterUseCompareYear', {
           header: () => <span>{lastYear}</span>,
-          cell: NumericCell(),
-          footer: NumericCell({ value: footer?.waterUseCompareYear }),
+          cell: (info) => <NumericFormat value={info.getValue()} />,
+          footer: () => <NumericFormat value={footer?.waterUseCompareYear} />,
         }),
         columnHelper.accessor('waterUseCurrentYear', {
           header: () => <span>{currYear}</span>,
-          cell: NumericCell(),
-          footer: NumericCell({ value: footer?.waterUseCurrentYear }),
+          cell: (info) => <NumericFormat value={info.getValue()} />,
+          footer: () => <NumericFormat value={footer?.waterUseCurrentYear} />,
         }),
         columnHelper.accessor('waterUseWeight', {
           header: () => <span>Weight</span>,
-          cell: NumericCell({ unit: 1e-2, suffix: '%' }),
-          footer: NumericCell({ value: footer?.waterUseWeight }),
+          cell: (info) => <NumericFormat value={info.getValue()} unit={1e-2} suffix="%" />,
+          footer: () => <NumericFormat value={footer?.waterUseWeight} unit={1e-2} suffix="%" />,
         }),
         columnHelper.accessor('waterUseGradient', {
           header: () => <span>Gap *</span>,
-          cell: NumericCell({ unit: 1e-2, suffix: '%' }),
-          footer: NumericCell({ value: footer?.waterUseGradient }),
+          cell: (info) => <NumericFormat value={info.getValue()} unit={1e-2} suffix="%" />,
+          footer: () => <NumericFormat value={footer?.waterUseGradient} unit={1e-2} suffix="%" />,
         }),
       ],
     }),
     columnHelper.group({
       id: nanoid(),
-      header: () => <span>Revenue</span>,
+      header: () => <span>Revenue (Billion NTD)</span>,
       columns: [
         columnHelper.accessor('revenueCompareYear', {
           header: () => <span>{lastYear}</span>,
-          cell: NumericCell({ precision: 3 }),
-          footer: NumericCell({ value: footer?.revenueCompareYear }),
+          cell: (info) => <NumericFormat value={info.getValue()} precision={3} />,
+          footer: () => <NumericFormat value={footer?.revenueCompareYear} precision={3} />,
         }),
         columnHelper.accessor('revenueCurrentYear', {
           header: () => <span>{currYear}</span>,
-          cell: NumericCell({ precision: 3 }),
-          footer: NumericCell({ value: footer?.revenueCurrentYear }),
+          cell: (info) => <NumericFormat value={info.getValue()} precision={3} />,
+          footer: () => <NumericFormat value={footer?.revenueCurrentYear} precision={3} />,
         }),
         columnHelper.accessor('revenueWeight', {
           header: () => <span>Weight</span>,
-          cell: NumericCell({ unit: 1e-2, suffix: '%' }),
-          footer: NumericCell({ value: footer?.revenueWeight }),
+          cell: (info) => <NumericFormat value={info.getValue()} unit={1e-2} suffix="%" />,
+          footer: () => <NumericFormat value={footer?.revenueWeight} unit={1e-2} suffix="%" />,
         }),
         columnHelper.accessor('revenueGradient', {
           header: () => <span>Gap *</span>,
-          cell: NumericCell({ unit: 1e-2, suffix: '%' }),
-          footer: NumericCell({ value: footer?.revenueGradient }),
+          cell: (info) => <NumericFormat value={info.getValue()} unit={1e-2} suffix="%" />,
+          footer: () => <NumericFormat value={footer?.revenueGradient} unit={1e-2} suffix="%" />,
         }),
       ],
     }),
     columnHelper.group({
       id: nanoid(),
-      header: () => <span>ASP</span>,
+      header: () => <span>ASP (Thousand NTD / Product)</span>,
       columns: [
         columnHelper.accessor('ASPCompareYear', {
           header: () => <span>{lastYear}</span>,
-          cell: NumericCell({ precision: 3 }),
-          footer: NumericCell({ value: footer?.ASPCompareYear }),
+          cell: (info) => <NumericFormat value={info.getValue()} precision={3} />,
+          footer: () => <NumericFormat value={footer?.ASPCompareYear} precision={3} />,
         }),
         columnHelper.accessor('ASPCurrentYear', {
           header: () => <span>{currYear}</span>,
-          cell: NumericCell({ precision: 3 }),
-          footer: NumericCell({ value: footer?.ASPCurrentYear }),
+          cell: (info) => <NumericFormat value={info.getValue()} precision={3} />,
+          footer: () => <NumericFormat value={footer?.ASPCurrentYear} precision={3} />,
         }),
         columnHelper.accessor('ASPGradient', {
           header: () => <span>Gap *</span>,
-          cell: NumericCell({ unit: 1e-2, suffix: '%' }),
-          footer: NumericCell({ value: footer?.ASPGradient }),
+          cell: (info) => <NumericFormat value={info.getValue()} unit={1e-2} suffix="%" />,
+          footer: () => <NumericFormat value={footer?.ASPGradient} unit={1e-2} suffix="%" />,
         }),
       ],
     }),

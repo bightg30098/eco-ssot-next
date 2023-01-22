@@ -2,10 +2,10 @@ import { nanoid } from 'nanoid'
 
 import wretch from '@/lib/wretch'
 
-import type { Overview } from './types'
+import type { Carbon } from './types'
 
-export async function getOverview() {
-  const { data } = await wretch.get('/overall').json<{ data: Overview[] }>()
+export async function getCarbon() {
+  const { data } = await wretch.get('/carbon').json<{ data: Carbon[] }>()
   const nextData = data.map((d) => ({
     id: nanoid(),
     ...d,

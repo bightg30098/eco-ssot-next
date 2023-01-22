@@ -1,5 +1,17 @@
 import TablePage from '../TablePage'
+import { getLatestDate } from '../services'
 
-export default function Carbon() {
-  return <TablePage title="Carbon"></TablePage>
+import CarbonTable from './CarbonTable'
+import { getCarbon } from './services'
+
+export default async function Carbon() {
+  const [carbon, latestDate] = await Promise.all([getCarbon(), getLatestDate()])
+
+  return (
+    <TablePage title="Carbon">
+      {carbon?.data && latestDate?.data && (
+        <CarbonTable data={carbon.data} latestDate={latestDate.data} data-superjson />
+      )}
+    </TablePage>
+  )
 }
