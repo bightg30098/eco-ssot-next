@@ -1,3 +1,5 @@
+'use client'
+
 import clsx from 'clsx'
 import { OverlayScrollbarsComponent as _OverlayScrollbarsComponent } from 'overlayscrollbars-react'
 

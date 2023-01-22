@@ -5,7 +5,8 @@ import { useCallback, useEffect, useState } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 
 import nprogress from '@/lib/nprogress'
-import RouterContext from '@/router/RouterContext'
+
+import RouterContext from './RouterContext'
 
 type Props = {
   children: React.ReactNode
@@ -13,7 +14,7 @@ type Props = {
   onComplete?: () => void
 }
 
-export default function RootLayoutClient({ children }: { children: React.ReactNode }) {
+export default function NProgressRouter({ children }: { children: React.ReactNode }) {
   const onStart = useCallback(() => nprogress.start(), [])
   const onComplete = useCallback(() => nprogress.done(), [])
 

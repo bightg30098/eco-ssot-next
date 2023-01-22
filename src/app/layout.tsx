@@ -1,7 +1,7 @@
 import { Toaster } from '@/lib/react-hot-toast'
+import NProgressRouter from '@/router/NProgressRouter'
 
 import Header from './Header'
-import RootLayoutClient from './layout.client'
 
 import '@/styles/globals.css'
 
@@ -15,12 +15,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head />
       <body>
         <Toaster />
-        <RootLayoutClient>
+        <NProgressRouter>
           <div className="flex h-screen w-screen flex-col overflow-hidden">
             <Header />
             {children}
           </div>
-        </RootLayoutClient>
+        </NProgressRouter>
       </body>
     </html>
   )

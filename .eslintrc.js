@@ -16,18 +16,18 @@ module.exports = {
       'warn',
       {
         blankLine: 'always',
-        prev: ['block-like', 'multiline-const', 'multiline-let'],
+        prev: ['block-like', 'multiline-const', 'multiline-let', 'multiline-var', 'directive'],
         next: '*',
-      },
-      {
-        blankLine: 'always',
-        prev: 'import',
-        next: ['export', 'block-like', 'const', 'let', 'function'],
       },
       {
         blankLine: 'always',
         prev: '*',
         next: ['block-like'],
+      },
+      {
+        blankLine: 'always',
+        prev: ['import', 'cjs-import'],
+        next: ['export', 'cjs-export', 'block-like', 'const', 'let', 'var', 'function'],
       },
     ],
     curly: ['warn', 'multi-line'],
