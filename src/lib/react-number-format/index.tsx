@@ -4,7 +4,10 @@ import { useMemo } from 'react'
 
 import { NumericFormat as _NumericFormat, PatternFormat as _PatternFormat } from 'react-number-format'
 
-import type { NumericFormatProps as _NumericFormatProps, PatternFormatProps as _PFProps } from 'react-number-format'
+import type {
+  NumericFormatProps as _NumericFormatProps,
+  PatternFormatProps as _PatternFormatProps,
+} from 'react-number-format'
 
 export type NumericFormatProps = {
   precision?: number
@@ -14,7 +17,7 @@ export type NumericFormatProps = {
 export type PatternFormatProps = {
   precision?: number
   unit?: number
-} & _PFProps
+} & _PatternFormatProps
 
 export function NumericFormat({
   value,

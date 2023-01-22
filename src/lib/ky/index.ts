@@ -14,6 +14,7 @@ export default ky.create({
             console.log(JSON.stringify(json))
             console.log('----------------------------------------\n')
           })
+
           return response
         },
       ],

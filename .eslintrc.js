@@ -9,8 +9,9 @@ module.exports = {
   rules: {
     '@typescript-eslint/consistent-type-imports': 'warn',
     '@typescript-eslint/no-empty-function': 'off',
-    'no-else-return': 'warn',
     'react/display-name': 'off',
+    'no-else-return': 'warn',
+    'newline-before-return': 'warn',
     'padding-line-between-statements': [
       'warn',
       {
