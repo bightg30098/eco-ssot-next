@@ -1,10 +1,11 @@
 'use client'
 
-import { useCallback, useId, useRef } from 'react'
+import { useCallback, useRef } from 'react'
 
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import { useSelect } from 'downshift'
+import { nanoid } from 'nanoid'
 import { twMerge } from 'tailwind-merge'
 
 import OverlayScrollbarsComponent from '@/lib/overlayscrollbars-react'
@@ -19,10 +20,12 @@ export type SelectProps = {
   panelClassName?: string
   className?: string
   label?: string
+  id?: string
   placeholder?: string
   by?: keyof SelectOption
   defaultSelectFirst?: boolean
   selected?: SelectOption
+  onChange?: (selected: SelectOption) => void
 }
 
 export type SelectOption = {
@@ -38,16 +41,19 @@ export default function Select({
   triggerClassName,
   panelClassName,
   label,
+  id = nanoid(),
   placeholder = 'Select',
   by = 'key',
   defaultSelectFirst = true,
   options = [],
   selected = defaultSelectFirst ? options[0] : undefined,
+  onChange = () => {},
 }: SelectProps) {
   const triggerRef = useRef<HTMLButtonElement>(null)
   const itemToString = useCallback((item: SelectOption | null) => item?.[by] || '', [by])
   const { isOpen, selectedItem, highlightedIndex, getToggleButtonProps, getLabelProps, getMenuProps, getItemProps } =
     useSelect({
+      id,
       itemToString,
       items: options,
       defaultSelectedItem: selected,
@@ -56,9 +62,12 @@ export default function Select({
           triggerRef.current?.focus()
         }
       },
+      onSelectedItemChange(changes) {
+        if (changes.selectedItem) {
+          onChange(changes.selectedItem)
+        }
+      },
     })
-
-  const id = useId()
 
   return (
     <div className={twMerge(containerClassName)}>
@@ -77,7 +86,7 @@ export default function Select({
           {...getToggleButtonProps({ id, ref: triggerRef })}
         >
           <Ellipsis
-            label={selectedItem ? selectedItem.key : placeholder}
+            label={selectedItem ? selectedItem.value : placeholder}
             className={clsx(selectedItem ? 'font-medium' : 'text-gray-50/50')}
           />
           <ChevronDownIcon className={clsx('h-5 w-5', isOpen && 'rotate-180')} />
@@ -104,7 +113,7 @@ export default function Select({
               key={`${item.key}${index}`}
               {...getItemProps({ item, index })}
             >
-              <span>{item.key}</span>
+              <span>{item.value}</span>
               {selectedItem === item && (
                 <CheckIcon
                   className={clsx(

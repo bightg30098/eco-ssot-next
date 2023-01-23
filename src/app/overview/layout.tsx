@@ -1,5 +1,5 @@
 import TablePage from '@/app/TablePage'
-import TablePageLayout from '@/app/TablePageLayout'
+import TablePageLayout from '@/ui/TablePageLayout'
 
 export default function OverviewLayout({ children }: { children: React.ReactNode }) {
   return (
