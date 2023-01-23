@@ -13,7 +13,7 @@ import type { Electricity } from './types'
 
 export default function ElectricityTable({ data, latestDate }: { data: Electricity[]; latestDate: Date }) {
   const footer = data.at(-1)
-  const columns = useMemo(() => getColumns({ footer, latestDate }), [footer, latestDate])
+  const columns = useMemo(() => getColumns({ footer, latestDate: new Date(latestDate) }), [footer, latestDate])
 
   return <Table columns={columns} data={data.slice(0, -1)} />
 }

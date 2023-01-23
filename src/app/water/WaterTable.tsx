@@ -15,7 +15,7 @@ const BASE_YEAR = 2016
 
 export default function WaterTable({ data, latestDate }: { data: Water[]; latestDate: Date }) {
   const footer = data.at(-1)
-  const columns = useMemo(() => getColumns({ footer, latestDate }), [footer, latestDate])
+  const columns = useMemo(() => getColumns({ footer, latestDate: new Date(latestDate) }), [footer, latestDate])
 
   return <Table columns={columns} data={data.slice(0, -1)} />
 }

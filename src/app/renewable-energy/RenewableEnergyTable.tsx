@@ -13,7 +13,7 @@ import type { RenewableEnergy } from './types'
 
 export default function RenewableEnergyTable({ data, latestDate }: { data: RenewableEnergy[]; latestDate: Date }) {
   const footer = data.at(-1)
-  const columns = useMemo(() => getColumns({ footer, latestDate }), [footer, latestDate])
+  const columns = useMemo(() => getColumns({ footer, latestDate: new Date(latestDate) }), [footer, latestDate])
 
   return <Table columns={columns} data={data.slice(0, -1)} />
 }

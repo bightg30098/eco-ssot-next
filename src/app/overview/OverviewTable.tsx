@@ -13,7 +13,7 @@ import type { Overview } from './types'
 
 export default function OverviewTable({ data, latestDate }: { data: Overview[]; latestDate: Date }) {
   const footer = data.at(-1)
-  const columns = useMemo(() => getColumns({ footer, latestDate }), [footer, latestDate])
+  const columns = useMemo(() => getColumns({ footer, latestDate: new Date(latestDate) }), [footer, latestDate])
 
   return <Table columns={columns} data={data.slice(0, -1)} />
 }

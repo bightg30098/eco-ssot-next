@@ -3,7 +3,7 @@
 import { useMemo, useContext, useCallback } from 'react'
 
 import Link from 'next/link'
-import { useSelectedLayoutSegments } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import qs from 'query-string'
 
 import RouterContext from './RouterContext'
@@ -18,16 +18,15 @@ type Props = {
 }
 
 export default function NavLink({ children, href, hrefAlias, className, ...props }: Props & LinkProps) {
-  const segments = useSelectedLayoutSegments()
-  const nextSegments = `/${segments.join('/')}`
+  const pathname = usePathname()
 
   const isActive = useMemo(() => {
-    const pathname = typeof href === 'string' ? href : href.pathname
+    const _pathname = typeof href === 'string' ? href : href.pathname ?? '/'
 
-    return hrefAlias
-      ? pathname?.endsWith(nextSegments) || hrefAlias.endsWith(nextSegments)
-      : !!pathname?.endsWith(nextSegments)
-  }, [nextSegments, href, hrefAlias])
+    if (hrefAlias) return hrefAlias === pathname || !!pathname?.startsWith(_pathname)
+
+    return !!pathname?.startsWith(_pathname)
+  }, [pathname, href, hrefAlias])
 
   const startChange = useContext(RouterContext)
 
