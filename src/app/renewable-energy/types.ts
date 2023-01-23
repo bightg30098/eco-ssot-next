@@ -10,5 +10,5 @@ export type RenewableEnergy = {
   target: number
   area: number
   structure: number
-  plants: RenewableEnergy[]
+  plants?: RenewableEnergy[]
 }
