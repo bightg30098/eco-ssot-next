@@ -24,7 +24,7 @@ export default function NavList() {
               <>
                 <span
                   className={clsx(
-                    'border-b-2 px-1 pb-1 text-lg font-medium text-current transition-colors duration-200',
+                    'border-b-2 px-1 pb-1 text-lg font-medium text-current',
                     isActive ? ' border-b-primary-600' : 'border-b-transparent',
                   )}
                 >

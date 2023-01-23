@@ -9,20 +9,18 @@ import { nanoid } from 'nanoid'
 import { Table, ExpandCell } from '@/components/table'
 import { NumericFormat } from '@/lib/react-number-format'
 
-import type { Carbon } from './types'
+import type { RenewableEnergy } from './types'
 
-const BASE_YEAR = 2016
-
-export default function CarbonTable({ data, latestDate }: { data: Carbon[]; latestDate: Date }) {
+export default function RenewableEnergyTable({ data, latestDate }: { data: RenewableEnergy[]; latestDate: Date }) {
   const footer = data.at(-1)
   const columns = useMemo(() => getColumns({ footer, latestDate }), [footer, latestDate])
 
   return <Table columns={columns} data={data.slice(0, -1)} />
 }
 
-const columnHelper = createColumnHelper<Carbon>()
+const columnHelper = createColumnHelper<RenewableEnergy>()
 
-const getColumns = ({ footer, latestDate }: { footer?: Carbon; latestDate: Date }) => {
+const getColumns = ({ footer, latestDate }: { footer?: RenewableEnergy; latestDate: Date }) => {
   const currYear = latestDate.getFullYear()
 
   return [
@@ -66,28 +64,33 @@ const getColumns = ({ footer, latestDate }: { footer?: Carbon; latestDate: Date 
           cell: (info) => <NumericFormat value={info.getValue()} />,
           footer: () => <NumericFormat value={footer?.solarElectric} />,
         }),
+        columnHelper.accessor('electricBuy', {
+          header: () => <span>Purchase Green electricity</span>,
+          cell: (info) => <NumericFormat value={info.getValue()} />,
+          footer: () => <NumericFormat value={footer?.electricBuy} />,
+        }),
+        columnHelper.accessor('energyInvest', {
+          header: () => <span>Green energy investment</span>,
+          cell: (info) => <NumericFormat value={info.getValue()} />,
+          footer: () => <NumericFormat value={footer?.energyInvest} />,
+        }),
         columnHelper.accessor('tRec', {
           header: () => <span>REC (c)</span>,
           cell: (info) => <NumericFormat value={info.getValue()} />,
           footer: () => <NumericFormat value={footer?.tRec} />,
         }),
-        columnHelper.accessor('co2Electric', {
-          header: () => <span>Non-renewable (d=a-b-c)</span>,
-          cell: (info) => <NumericFormat value={info.getValue()} />,
-          footer: () => <NumericFormat value={footer?.co2Electric} />,
-        }),
       ],
     }),
     columnHelper.group({
       id: nanoid(),
       header: () => (
-        <span>{`Carbon Emission Factor (e)
-      (Ton CO₂e/MWh)`}</span>
+        <span>{`Percentage
+        ( (b+c) / a )`}</span>
       ),
       columns: [
-        columnHelper.accessor('co2Coefficient', {
-          cell: (info) => <NumericFormat value={info.getValue()} />,
-          footer: () => <span>-</span>,
+        columnHelper.accessor('percent', {
+          cell: (info) => <NumericFormat value={info.getValue()} unit={1e-2} suffix="%" />,
+          footer: () => <NumericFormat value={footer?.percent} />,
           meta: {
             header: { isPlaceholder: true },
           },
@@ -99,88 +102,47 @@ const getColumns = ({ footer, latestDate }: { footer?: Carbon; latestDate: Date 
     }),
     columnHelper.group({
       id: nanoid(),
-      header: () => <span>Carbon Emission (Ton)</span>,
-      columns: [
-        columnHelper.accessor('scope1', {
-          header: () => <span>Scope1 (f)</span>,
-          cell: (info) => <NumericFormat value={info.getValue()} />,
-          footer: () => <NumericFormat value={footer?.scope1} />,
-        }),
-        columnHelper.accessor('scope2', {
-          header: () => <span>Scope2 (g=d*e/1000)</span>,
-          cell: (info) => <NumericFormat value={info.getValue()} />,
-          footer: () => <NumericFormat value={footer?.scope2} />,
-        }),
-        columnHelper.accessor('co2CurrentYear', {
-          header: () => <span>{currYear} Total (h=f+g)</span>,
-          cell: (info) => <NumericFormat value={info.getValue()} />,
-          footer: () => <NumericFormat value={footer?.co2CurrentYear} />,
-        }),
-        columnHelper.accessor('co2baseYear', {
-          header: () => <span>{BASE_YEAR} Total (i)</span>,
-          cell: (info) => <NumericFormat value={info.getValue()} />,
-          footer: () => <NumericFormat value={footer?.co2baseYear} />,
-        }),
-        columnHelper.display({
-          id: nanoid(),
-          // TODO: GET TARGET FROM API
-          header: () => <span>Carbon Emission Target (j=i*74.8%)</span>,
-          cell: (info) => <NumericFormat value={info.cell.row.original.co2baseYear * 0.748} />,
-          footer: () => <NumericFormat value={footer?.target} />,
-        }),
-      ],
-    }),
-    columnHelper.group({
-      id: nanoid(),
+      // TODO: GET TARGET FROM API
       header: () => (
-        <span>{`Wistron Internal Carbon Pricing
-        (k)(EUR)`}</span>
-      ),
-      columns: [
-        columnHelper.display({
-          id: nanoid(),
-          cell: () => <span>-</span>,
-          footer: () => <span>-</span>,
-          meta: {
-            header: { isExpander: true },
-          },
-        }),
-      ],
-      meta: {
-        header: { rowSpan: 2 },
-      },
-    }),
-    columnHelper.group({
-      id: nanoid(),
-      header: () => (
-        <span>{`Carbon Tax
-        (h-j)*k`}</span>
-      ),
-      columns: [
-        columnHelper.display({
-          id: nanoid(),
-          cell: () => <span>-</span>,
-          footer: () => <span>-</span>,
-          meta: {
-            header: { isPlaceholder: true },
-          },
-        }),
-      ],
-      meta: {
-        header: { rowSpan: 2 },
-      },
-    }),
-    columnHelper.group({
-      id: nanoid(),
-      header: () => (
-        <span>{`REC Target for Carbon Offset
-        (h-i*74.8%)*1000/e`}</span>
+        <span>{`REC Target for Renewable Energy (kWh)
+        ( a*57% - b )`}</span>
       ),
       columns: [
         columnHelper.accessor('target', {
-          // TODO: GET TARGET FROM API
           cell: (info) => <NumericFormat value={info.getValue()} />,
           footer: () => <NumericFormat value={footer?.target} />,
+          meta: {
+            header: { isPlaceholder: true },
+          },
+        }),
+      ],
+      meta: {
+        header: { rowSpan: 2 },
+      },
+    }),
+    columnHelper.group({
+      id: nanoid(),
+      header: () => <span>Usable Roof Area (M²) </span>,
+      columns: [
+        columnHelper.accessor('area', {
+          cell: (info) => <NumericFormat value={info.getValue()} />,
+          footer: () => <NumericFormat value={footer?.area} />,
+          meta: {
+            header: { isPlaceholder: true },
+          },
+        }),
+      ],
+      meta: {
+        header: { rowSpan: 2 },
+      },
+    }),
+    columnHelper.group({
+      id: nanoid(),
+      header: () => <span>Roof Structure (RC / Steel Structure)</span>,
+      columns: [
+        columnHelper.accessor('structure', {
+          cell: (info) => <NumericFormat value={info.getValue()} />,
+          footer: () => <NumericFormat value={footer?.structure} />,
           meta: {
             header: { isPlaceholder: true },
           },

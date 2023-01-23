@@ -11,6 +11,13 @@ import { NumericFormat } from '@/lib/react-number-format'
 
 import type { Overview } from './types'
 
+export default function OverviewTable({ data, latestDate }: { data: Overview[]; latestDate: Date }) {
+  const footer = data.at(-1)
+  const columns = useMemo(() => getColumns({ footer, latestDate }), [footer, latestDate])
+
+  return <Table columns={columns} data={data.slice(0, -1)} />
+}
+
 const columnHelper = createColumnHelper<Overview>()
 
 const getColumns = ({ footer, latestDate }: { footer?: Overview; latestDate: Date }) => {
@@ -144,11 +151,4 @@ const getColumns = ({ footer, latestDate }: { footer?: Overview; latestDate: Dat
       ],
     }),
   ]
-}
-
-export default function OverviewTable({ data, latestDate }: { data: Overview[]; latestDate: Date }) {
-  const footer = data.at(-1)
-  const columns = useMemo(() => getColumns({ footer, latestDate }), [footer, latestDate])
-
-  return <Table columns={columns} data={data.slice(0, -1)} />
 }
