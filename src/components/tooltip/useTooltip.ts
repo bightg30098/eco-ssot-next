@@ -21,7 +21,7 @@ export function useTooltip({
   open: controlledOpen,
   onOpenChange: setControlledOpen,
 }: TooltipOptions) {
-  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen)
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(() => defaultOpen)
   const open = controlledOpen ?? uncontrolledOpen
   const setOpen = setControlledOpen ?? setUncontrolledOpen
   const data = useFloating({

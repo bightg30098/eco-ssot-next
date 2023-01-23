@@ -1,5 +1,5 @@
 const colors = require('tailwindcss/colors')
-const defaultTheme = require('tailwindcss/defaultTheme');
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 const baseSizes = {
   1: '0.25rem',
@@ -103,6 +103,7 @@ module.exports = {
       colors: {
         gray: colors.neutral,
         primary: {
+          ...colors.emerald,
           500: '#21CC97',
           600: '#489C9C',
           700: '#3F7879',
@@ -110,23 +111,21 @@ module.exports = {
           900: '#203033',
         },
         dangerous: {
+          ...colors.red,
           500: '#FF4E4E',
           700: '#D23B5F',
           900: '#69061E',
         },
-        divider: {
-          DEFAULT: '#707070',
-        },
-        unit: {
-          DEFAULT: '#D6D6D6',
-        },
         yellow: {
+          ...colors.yellow,
           DEFAULT: '#FACA00',
         },
         orange: {
+          ...colors.orange,
           DEFAULT: '#FF9300',
         },
         blue: {
+          ...colors.blue,
           DEFAULT: '#3BAEE5',
         },
       },

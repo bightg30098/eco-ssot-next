@@ -26,7 +26,7 @@ export default function NProgressRouter({ children }: { children: React.ReactNod
 }
 
 function RouterEvent({ children, onStart = () => {}, onComplete = () => {} }: Props) {
-  const [isChanging, setIsChanging] = useState(false)
+  const [isChanging, setIsChanging] = useState(() => false)
   const pathname = usePathname()
   const searchParams = useSearchParams()
   useEffect(() => setIsChanging(false), [pathname, searchParams])
