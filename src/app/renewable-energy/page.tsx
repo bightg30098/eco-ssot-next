@@ -1,5 +1,3 @@
-import TablePage from '@/app/TablePage'
-
 import { getLatestDate } from '../services'
 
 import RenewableEnergyTable from './RenewableEnergyTable'
@@ -9,10 +7,7 @@ export default async function RenewableEnergy() {
   const [renewableEnergy, latestDate] = await Promise.all([getRenewableEnergy(), getLatestDate()])
 
   return (
-    <TablePage title="Renewable Energy">
-      {renewableEnergy?.data && latestDate?.data && (
-        <RenewableEnergyTable data={renewableEnergy.data} latestDate={latestDate.data} data-superjson />
-      )}
-    </TablePage>
+    renewableEnergy?.data &&
+    latestDate?.data && <RenewableEnergyTable data={renewableEnergy.data} latestDate={latestDate.data} data-superjson />
   )
 }

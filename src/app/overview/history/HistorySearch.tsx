@@ -5,6 +5,7 @@ import { useCallback, useMemo, useState } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 
 import LinkButton from '@/components/button/LinkButton'
+import DummyDiv from '@/components/dummy/DummyDiv'
 import Select from '@/components/select/Select'
 
 const MIN_YEAR = 2020
@@ -29,20 +30,28 @@ export default function HistorySearch({ year }: { year: number }) {
   )
 
   return (
-    <div className="flex items-center space-x-8 self-center">
-      <Select
-        id="year-select"
-        options={yearOptions}
-        selected={getSelectedYear()}
-        onChange={(option) => setQuery({ ...query, year: option.key })}
-      />
-      <Select
-        id="dimension-select"
-        options={dimensionOptions}
-        selected={getSelectedDimension()}
-        onChange={(option) => setQuery({ ...query, dimension: option.key })}
-      />
-      <LinkButton href={{ pathname, query }}>Search</LinkButton>
+    <div className="flex items-center justify-between">
+      <DummyDiv />
+      <div className="inline-flex items-center space-x-8">
+        <Select
+          id="year-select"
+          label="Year : "
+          options={yearOptions}
+          selected={getSelectedYear()}
+          onChange={(option) => setQuery({ ...query, year: option.key })}
+        />
+        <Select
+          id="dimension-select"
+          label="Dimension : "
+          options={dimensionOptions}
+          selected={getSelectedDimension()}
+          onChange={(option) => setQuery({ ...query, dimension: option.key })}
+        />
+        <LinkButton href={{ pathname, query }}>Search</LinkButton>
+      </div>
+      <LinkButton href={`${pathname}`} passHref legacyBehavior>
+        Excel
+      </LinkButton>
     </div>
   )
 }

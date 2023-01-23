@@ -7,31 +7,31 @@ import { twMerge } from 'tailwind-merge'
 
 import NavLink from '@/router/NavLink'
 
-type NavLinkGroupOption = {
+type LinkButtonGroupOption = {
   key: string
   value: string
   alias?: string
   href: string
 }
 
-type NavLinkGroupProps = {
+type LinkButtonGroupProps = {
   className?: string
-  options: NavLinkGroupOption[]
+  options: LinkButtonGroupOption[]
   defaultSelectFirst?: boolean
-  selected?: NavLinkGroupOption
-  by?: keyof NavLinkGroupOption
-  onChange?: (option: NavLinkGroupOption) => void
+  selected?: LinkButtonGroupOption
+  by?: keyof LinkButtonGroupOption
+  onChange?: (option: LinkButtonGroupOption) => void
 }
 
-export default function NavLinkGroup({
+export default function LinkButtonGroup({
   className,
   defaultSelectFirst = true,
   options = [],
   by = 'key',
   selected = defaultSelectFirst ? options[0] : undefined,
   onChange = () => {},
-}: NavLinkGroupProps) {
-  const [_selected, setSelected] = useState<NavLinkGroupOption | undefined>(() => selected)
+}: LinkButtonGroupProps) {
+  const [_selected, setSelected] = useState<LinkButtonGroupOption | undefined>(() => selected)
 
   return (
     <span className={twMerge('isolate inline-flex rounded-md shadow-sm', className)}>

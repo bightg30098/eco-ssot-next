@@ -2,7 +2,8 @@
 
 import { useCallback } from 'react'
 
-import NavLinkGroup from '@/components/button-group/NavLinkGroup'
+import LinkButtonGroup from '@/components/button-group/LinkButtonGroup'
+import DummyDiv from '@/components/dummy/DummyDiv'
 
 import TablePanel from './TablePanel'
 
@@ -19,13 +20,13 @@ export default function TablePageLayout({ children }: { children: React.ReactNod
       <TablePanel>
         {({ isHistory, pathname, basePathname }) => (
           <>
-            <div className="flex items-center justify-between">
-              <div></div>
-              <NavLinkGroup
+            <div className="relative flex items-center justify-between">
+              <DummyDiv />
+              <LinkButtonGroup
                 options={getOptions(basePathname)}
                 selected={isHistory ? getOptions(basePathname).at(-1) : getOptions(basePathname)[0]}
               />
-              <div></div>
+              <DummyDiv />
             </div>
 
             {children}
