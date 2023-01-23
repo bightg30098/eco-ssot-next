@@ -2,6 +2,6 @@
 
 import { createContext } from 'react'
 
-const RouterContext = createContext<() => void>(() => {})
+const RouterContext = createContext<(next: boolean) => void>(() => {})
 
 export default RouterContext

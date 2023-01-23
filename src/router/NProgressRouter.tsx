@@ -51,5 +51,5 @@ function RouterEvent({ children, onStart = () => {}, onComplete = () => {} }: Pr
     }
   }, [isChanging, onStart, onComplete])
 
-  return <RouterContext.Provider value={() => setIsChanging(true)}>{children}</RouterContext.Provider>
+  return <RouterContext.Provider value={(next) => setIsChanging(next)}>{children}</RouterContext.Provider>
 }

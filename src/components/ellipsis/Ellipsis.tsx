@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useLayoutEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 import Tooltip from '../tooltip/Tooltip'
 
@@ -13,7 +13,7 @@ export default function Ellipsis({ label, className }: Props) {
   const ref = useRef<HTMLSpanElement>(null)
   const [isTruncated, setIsTruncated] = useState<boolean>(() => false)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (ref.current !== null) {
       setIsTruncated(ref.current.scrollWidth > ref.current.clientWidth)
     }

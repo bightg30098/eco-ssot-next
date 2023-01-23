@@ -5,37 +5,40 @@ import React, { useState } from 'react'
 import clsx from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
-type ButtonGroupOption = {
+import NavLink from '@/router/NavLink'
+
+type NavLinkGroupOption = {
   key: string
   value: string
   alias?: string
+  href: string
 }
 
-type ButtonGroupProps = {
+type NavLinkGroupProps = {
   className?: string
-  options: ButtonGroupOption[]
+  options: NavLinkGroupOption[]
   defaultSelectFirst?: boolean
-  selected?: ButtonGroupOption
-  by?: keyof ButtonGroupOption
-  onChange?: (option: ButtonGroupOption) => void
+  selected?: NavLinkGroupOption
+  by?: keyof NavLinkGroupOption
+  onChange?: (option: NavLinkGroupOption) => void
 }
 
-export default function ButtonGroup({
+export default function NavLinkGroup({
   className,
   defaultSelectFirst = true,
   options = [],
   by = 'key',
   selected = defaultSelectFirst ? options[0] : undefined,
   onChange = () => {},
-}: ButtonGroupProps) {
-  const [_selected, setSelected] = useState<ButtonGroupOption | undefined>(() => selected)
+}: NavLinkGroupProps) {
+  const [_selected, setSelected] = useState<NavLinkGroupOption | undefined>(() => selected)
 
   return (
     <span className={twMerge('isolate inline-flex rounded-md shadow-sm', className)}>
       {options.map((option, i) => (
-        <button
+        <NavLink
           key={option.key}
-          type="button"
+          href={option.href}
           className={clsx(
             'relative inline-flex items-center border border-primary-800 px-4 py-2 focus:z-10 focus:border-primary-600 focus:outline-none focus:ring-1 focus:ring-primary-600',
             i === 0 && 'rounded-l-md',
@@ -51,7 +54,7 @@ export default function ButtonGroup({
           }}
         >
           {option.alias ?? option.value}
-        </button>
+        </NavLink>
       ))}
     </span>
   )

@@ -104,7 +104,7 @@ const getColumns = ({ footer, latestDate }: { footer?: Water; latestDate: Date }
           cell: (info) => <NumericFormat value={info.getValue()} precision={3} />,
           footer: () => <NumericFormat value={footer?.water_manpowerCompareYear} />,
         }),
-        columnHelper.accessor('waterCurrentYear', {
+        columnHelper.accessor('water_manpowerCurrentYear', {
           header: () => <span>{currYear}</span>,
           cell: (info) => <NumericFormat value={info.getValue()} precision={3} />,
           footer: () => <NumericFormat value={footer?.water_manpowerCurrentYear} />,

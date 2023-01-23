@@ -1,4 +1,5 @@
-import TablePage from '../TablePage'
+import TablePage from '@/app/TablePage'
+
 import { getLatestDate } from '../services'
 
 import RenewableEnergyTable from './RenewableEnergyTable'

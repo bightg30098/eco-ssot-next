@@ -3,7 +3,7 @@
 import { useMemo, useContext } from 'react'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useSelectedLayoutSegments } from 'next/navigation'
 
 import RouterContext from './RouterContext'
 
@@ -17,10 +17,12 @@ type Props = {
 }
 
 export default function NavLink({ children, href, hrefAlias, className, ...props }: Props & LinkProps) {
-  const pathname = usePathname()
+  const segments = useSelectedLayoutSegments()
+  const nextSegments = `/${segments.join('/')}`
+
   const isActive = useMemo(
-    () => (hrefAlias ? pathname === href || pathname === hrefAlias : pathname === href),
-    [pathname, href, hrefAlias],
+    () => (hrefAlias ? href.endsWith(nextSegments) || hrefAlias.endsWith(nextSegments) : href.endsWith(nextSegments)),
+    [nextSegments, href, hrefAlias],
   )
 
   const startChange = useContext(RouterContext)
@@ -33,7 +35,7 @@ export default function NavLink({ children, href, hrefAlias, className, ...props
       onClick={(e) => {
         props.onClick?.(e)
         const { pathname, search, hash } = window.location
-        if (href !== `${pathname}${search}${hash}`) startChange()
+        startChange(href !== `${pathname}${search}${hash}`)
       }}
     >
       {typeof children === 'function' ? children({ isActive }) : children}
