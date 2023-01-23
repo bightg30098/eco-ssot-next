@@ -26,14 +26,22 @@ const getColumns = ({ footer, latestDate }: { footer?: Carbon; latestDate: Date 
         cell: { isExpander: true },
       },
     }),
-    columnHelper.accessor('name', {
+    columnHelper.group({
+      id: nanoid(),
       header: () => <span>Site</span>,
-      cell: (info) => info.getValue(),
-      footer: () => <span>{footer?.name}</span>,
+      columns: [
+        columnHelper.accessor('name', {
+          cell: (info) => info.getValue(),
+          footer: () => <span>{footer?.name}</span>,
+          meta: {
+            header: { isPlaceholder: true },
+            cell: { className: clsx('whitespace-nowrap text-center') },
+            footer: { className: clsx('text-center') },
+          },
+        }),
+      ],
       meta: {
-        header: { className: clsx('-translate-y-1/2 text-center') },
-        cell: { className: clsx('text-center') },
-        footer: { className: clsx('text-center') },
+        header: { rowSpan: 2 },
       },
     }),
     columnHelper.group({
@@ -62,17 +70,25 @@ const getColumns = ({ footer, latestDate }: { footer?: Carbon; latestDate: Date 
         }),
       ],
     }),
-    columnHelper.accessor('co2Coefficient', {
+    columnHelper.group({
+      id: nanoid(),
       header: () => (
         <span>{`Carbon Emission Factor (e)
       (Ton CO₂e/MWh)`}</span>
       ),
-      cell: (info) => info.getValue(),
-      footer: () => <span>-</span>,
+      columns: [
+        columnHelper.accessor('co2Coefficient', {
+          cell: (info) => info.getValue(),
+          footer: () => <span>-</span>,
+          meta: {
+            header: { isPlaceholder: true },
+            cell: { className: clsx('text-center') },
+            footer: { className: clsx('text-center') },
+          },
+        }),
+      ],
       meta: {
-        header: { className: clsx('-translate-y-1/2 text-center') },
-        cell: { className: clsx('text-center') },
-        footer: { className: clsx('text-center') },
+        header: { rowSpan: 2 },
       },
     }),
     columnHelper.group({
@@ -108,40 +124,64 @@ const getColumns = ({ footer, latestDate }: { footer?: Carbon; latestDate: Date 
         }),
       ],
     }),
-    columnHelper.display({
+    columnHelper.group({
       id: nanoid(),
       header: () => (
         <span>{`Wistron Internal Carbon Pricing
         (k)(EUR)`}</span>
       ),
-      cell: () => <span>-</span>,
-      footer: () => <span>-</span>,
+      columns: [
+        columnHelper.display({
+          id: nanoid(),
+          cell: () => <span>-</span>,
+          footer: () => <span>-</span>,
+          meta: {
+            header: { isExpander: true },
+          },
+        }),
+      ],
       meta: {
-        header: { className: clsx('-translate-y-1/2 text-center') },
+        header: { rowSpan: 2 },
       },
     }),
-    columnHelper.display({
+    columnHelper.group({
       id: nanoid(),
       header: () => (
         <span>{`Carbon Tax
         (h-j)*k`}</span>
       ),
-      cell: () => <span>-</span>,
-      footer: () => <span>-</span>,
+      columns: [
+        columnHelper.display({
+          id: nanoid(),
+          cell: () => <span>-</span>,
+          footer: () => <span>-</span>,
+          meta: {
+            header: { isPlaceholder: true },
+          },
+        }),
+      ],
       meta: {
-        header: { className: clsx('-translate-y-1/2 text-center') },
+        header: { rowSpan: 2 },
       },
     }),
-    columnHelper.accessor('target', {
-      // TODO: GET TARGET FROM API
+    columnHelper.group({
+      id: nanoid(),
       header: () => (
         <span>{`REC Target for Carbon Offset
         (h-i*74.8%)*1000/e`}</span>
       ),
-      cell: (info) => <NumericFormat value={info.getValue()} />,
-      footer: () => <NumericFormat value={footer?.target} />,
+      columns: [
+        columnHelper.accessor('target', {
+          // TODO: GET TARGET FROM API
+          cell: (info) => <NumericFormat value={info.getValue()} />,
+          footer: () => <NumericFormat value={footer?.target} />,
+          meta: {
+            header: { isPlaceholder: true },
+          },
+        }),
+      ],
       meta: {
-        header: { className: clsx('-translate-y-1/2 text-center') },
+        header: { rowSpan: 2 },
       },
     }),
   ]

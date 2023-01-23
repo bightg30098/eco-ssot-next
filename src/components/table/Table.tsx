@@ -32,6 +32,8 @@ function BaseTable<T>({ table }: TableProps<T>) {
             return (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
+                  if (header.column.columnDef.meta?.header?.isPlaceholder) return null
+
                   return (
                     <th
                       key={header.id}
@@ -40,13 +42,22 @@ function BaseTable<T>({ table }: TableProps<T>) {
                         header.column.columnDef.meta?.header?.isExpander
                           ? 'p-0'
                           : isHeaderGroup(header)
-                          ? 'px-4 pt-2.5 text-center'
-                          : 'p-2.5 px-4',
+                          ? 'px-4 text-center'
+                          : 'py-2.5 px-4',
                         header.column.columnDef.meta?.header?.className,
                       )}
+                      {...(header.column.columnDef.meta?.header?.rowSpan !== undefined && {
+                        rowSpan: header.column.columnDef.meta?.header?.rowSpan,
+                      })}
                     >
                       {header.isPlaceholder ? null : (
-                        <div className={clsx(isHeaderGroup(header) && 'border-b border-b-gray-500 pb-2.5')}>
+                        <div
+                          className={clsx(
+                            isHeaderGroup(header) &&
+                              !header.column.columnDef.meta?.header?.rowSpan &&
+                              'border-b border-b-gray-500 py-2.5',
+                          )}
+                        >
                           {flexRender(header.column.columnDef.header, header.getContext())}
                         </div>
                       )}

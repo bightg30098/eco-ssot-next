@@ -26,14 +26,22 @@ const getColumns = ({ footer, latestDate }: { footer?: Overview; latestDate: Dat
         cell: { isExpander: true },
       },
     }),
-    columnHelper.accessor('site', {
+    columnHelper.group({
+      id: nanoid(),
       header: () => <span>Site</span>,
-      cell: (info) => info.getValue(),
-      footer: () => <span>{footer?.site}</span>,
+      columns: [
+        columnHelper.accessor('site', {
+          cell: (info) => info.getValue(),
+          footer: () => <span>{footer?.site}</span>,
+          meta: {
+            header: { isPlaceholder: true },
+            cell: { className: clsx('whitespace-nowrap text-center') },
+            footer: { className: clsx('text-center') },
+          },
+        }),
+      ],
       meta: {
-        header: { className: clsx('-translate-y-1/2 text-center') },
-        cell: { className: clsx('text-center') },
-        footer: { className: clsx('text-center') },
+        header: { rowSpan: 2 },
       },
     }),
     columnHelper.group({

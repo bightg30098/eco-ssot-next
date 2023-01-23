@@ -2,14 +2,15 @@ import '@tanstack/react-table'
 
 declare module '@tanstack/table-core' {
   interface ColumnMeta {
-    cell?: {
+    header?: {
       className?: string
       rowSpan?: number
       colSpan?: number
       isExpander?: boolean
+      isPlaceholder?: boolean
     }
 
-    header?: {
+    cell?: {
       className?: string
       rowSpan?: number
       colSpan?: number
@@ -20,7 +21,6 @@ declare module '@tanstack/table-core' {
       className?: string
       rowSpan?: number
       colSpan?: number
-      isExpander?: boolean
     }
   }
 
