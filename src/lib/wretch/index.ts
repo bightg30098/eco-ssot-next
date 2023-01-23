@@ -23,7 +23,7 @@ const logger = () => (next: FetchLike) => async (url: string, opts: WretchOption
 
 const wretch = _wretch(process.env.BACKEND_API_URL)
   .middlewares([logger(), dedupe()])
-  .addon(QueryStringAddon)
   .addon(FormDataAddon)
+  .addon(QueryStringAddon)
 
 export default wretch
