@@ -129,16 +129,23 @@ module.exports = {
           DEFAULT: '#3BAEE5',
         },
       },
+      width: {
+        inherit: 'inherit',
+      },
       maxHeight: {
+        inherit: 'inherit',
         ...baseSizes,
       },
       maxWidth: {
+        inherit: 'inherit',
         ...baseSizes,
       },
       minHeight: {
+        inherit: 'inherit',
         ...baseSizes,
       },
       minWidth: {
+        inherit: 'inherit',
         ...baseSizes,
       },
       gridTemplateRows: {
