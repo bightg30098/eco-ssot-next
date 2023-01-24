@@ -1,7 +1,7 @@
 export default function Head() {
   return (
     <>
-      <title>Unit Electricity History - ECO SSOT</title>
+      <title>History | Unit Electricity - ECO SSOT</title>
     </>
   )
 }
