@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { usePathname, useSearchParams } from 'next/navigation'
 import qs from 'query-string'
@@ -12,29 +12,32 @@ import Select from '@/components/select/Select'
 
 const MIN_YEAR = 2020
 
+type Query = {
+  year?: string
+  dimension?: string
+}
+
 export default function HistorySearch({ year }: { year: number }) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const _year = searchParams.get('year') || String(year)
+  const _year = searchParams.get('year') ?? String(year)
   const dimension = searchParams.get('dimension')
   const yearOptions = useMemo(() => YEAR_OPTIONS({ year }), [year])
   const dimensionOptions = useMemo(() => DIMENSION_OPTIONS(), [])
-  const [query, setQuery] = useState(() => ({ year: _year, dimension: dimension ?? dimensionOptions[0].key }))
+  const [query, setQuery] = useState<Query>(() => ({}))
 
-  const getSelectedYear = useCallback(
-    () => yearOptions.find((option) => option.key === _year) || yearOptions[0],
-    [_year, yearOptions],
-  )
+  const getSelectedYear = () => yearOptions.find((option) => option.key === _year) ?? yearOptions[0]
+  const getSelectedDimension = () => dimensionOptions.find((option) => option.key === dimension) ?? dimensionOptions[0]
 
-  const getSelectedDimension = useCallback(
-    () => dimensionOptions.find((option) => option.key === dimension) || dimensionOptions[0],
-    [dimension, dimensionOptions],
-  )
+  const getQuery = () => ({
+    year: query.year ?? yearOptions[0]?.key,
+    dimension: query.dimension ?? dimensionOptions[0]?.key,
+  })
 
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-6 gap-4">
       <DummyDiv className="col-span-1" />
-      <div className="col-span-2 flex w-full items-center justify-center space-x-8">
+      <div className="col-span-4 flex w-full items-center justify-center space-x-8">
         <Select
           id="year-select"
           label="Year : "
@@ -49,7 +52,7 @@ export default function HistorySearch({ year }: { year: number }) {
           selected={getSelectedDimension()}
           onChange={(option) => setQuery({ ...query, dimension: option.key })}
         />
-        <LinkButton href={{ pathname, query }}>Search</LinkButton>
+        <LinkButton href={{ pathname, query: getQuery() }}>Search</LinkButton>
       </div>
       <div className="col-span-1 flex w-full items-center justify-end">
         <DownloadButton href={`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/overall/download/?${qs.stringify(query)}`}>

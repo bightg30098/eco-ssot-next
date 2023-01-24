@@ -1,9 +1,6 @@
 'use client'
 
-import { Fragment, useCallback } from 'react'
-
 import { autoUpdate, flip, offset, useFloating } from '@floating-ui/react'
-import { Transition } from '@headlessui/react'
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import { useSelect } from 'downshift'
@@ -23,10 +20,10 @@ export type SelectProps = {
   triggerClassName?: string
   panelClassName?: string
   className?: string
-  label?: string
+  label?: React.ReactNode
   id?: string
   placeholder?: string
-  by?: keyof SelectOption
+  by?: 'key' | 'value' | 'alias'
   defaultSelectFirst?: boolean
   selected?: SelectOption
   placement?: Placement
@@ -38,8 +35,10 @@ export type SelectOption = {
   key: string
   value: string
   alias?: string
+  disabled?: boolean
 }
 
+// TODO: ADD TRANSITIONS
 export default function Select({
   className,
   containerClassName,
@@ -57,11 +56,22 @@ export default function Select({
   strategy = 'absolute',
   onChange = () => {},
 }: SelectProps) {
-  const itemToString = useCallback((item: SelectOption | null) => item?.[by] || '', [by])
+  const { isOpen, selectedItem, highlightedIndex, getToggleButtonProps, getLabelProps, getMenuProps, getItemProps } =
+    useSelect({
+      id,
+      itemToString: (item) => item?.[by] || '',
+      items: options,
+      defaultSelectedItem: selected,
+      onSelectedItemChange(changes) {
+        if (changes.selectedItem) {
+          onChange(changes.selectedItem)
+        }
+      },
+    })
+
   const {
     x,
     y,
-    refs,
     reference,
     floating,
     strategy: _strategy,
@@ -71,19 +81,6 @@ export default function Select({
     whileElementsMounted: autoUpdate,
     middleware: [offset(5), flip({ padding: 10 })],
   })
-
-  const { isOpen, selectedItem, highlightedIndex, getToggleButtonProps, getLabelProps, getMenuProps, getItemProps } =
-    useSelect({
-      id,
-      itemToString,
-      items: options,
-      defaultSelectedItem: selected,
-      onSelectedItemChange(changes) {
-        if (changes.selectedItem) {
-          onChange(changes.selectedItem)
-        }
-      },
-    })
 
   return (
     <div className={twMerge('inline-flex items-center space-x-2', containerClassName)}>
@@ -110,14 +107,7 @@ export default function Select({
         </button>
 
         <div {...getMenuProps()} className="relative z-20 w-inherit">
-          <Transition
-            show={isOpen}
-            as={Fragment}
-            leave="transition ease-in duration-100"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-            beforeLeave={() => (refs.reference.current as HTMLButtonElement)?.focus()}
-          >
+          {isOpen && (
             <div
               ref={floating}
               className="w-inherit"
@@ -138,6 +128,7 @@ export default function Select({
                     className={clsx(
                       highlightedIndex === index && 'bg-primary-600',
                       selectedItem === item && 'font-medium',
+                      item.disabled && 'pointer-events-none opacity-50',
                       'flex select-none items-center justify-between gap-4 px-3 py-2',
                     )}
                     key={`${item.key}${index}`}
@@ -156,7 +147,7 @@ export default function Select({
                 ))}
               </OverlayScrollbarsComponent>
             </div>
-          </Transition>
+          )}
         </div>
       </div>
     </div>

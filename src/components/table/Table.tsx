@@ -1,7 +1,5 @@
 'use client'
 
-import { useCallback } from 'react'
-
 import { flexRender, getCoreRowModel, getExpandedRowModel, useReactTable } from '@tanstack/react-table'
 import clsx from 'clsx'
 
@@ -22,7 +20,7 @@ type ColumnsDataProps<T> = {
 type Props<T> = TableProps<T> | ColumnsDataProps<T>
 
 function BaseTable<T>({ table }: TableProps<T>) {
-  const isHeaderGroup = useCallback((header: Header<T, unknown>) => header.subHeaders.length > 0, [])
+  const isHeaderGroup = (header: Header<T, unknown>) => header.subHeaders.length > 0
 
   return (
     <OverlayScrollbarsComponent className="relative flex flex-col overflow-auto rounded-t-lg shadow-lg">

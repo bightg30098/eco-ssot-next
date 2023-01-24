@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useContext, useCallback } from 'react'
+import { useMemo, useContext } from 'react'
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -30,20 +30,20 @@ export default function NavLink({ children, href, hrefAlias, className, ...props
 
   const startChange = useContext(RouterContext)
 
-  const isSameSearch = useCallback((href: UrlObject, search: string) => {
+  const isSameSearch = (href: UrlObject, search: string) => {
     if (typeof href.query === 'object' && href.query !== null) {
       return qs.stringify(href.query).slice(1) === qs.stringify(qs.parse(search)).slice(1)
     }
 
     return qs.stringify(qs.parse(href.search ?? '')).slice(1) === qs.stringify(qs.parse(search)).slice(1)
-  }, [])
+  }
 
-  const isSameUrl = useCallback(() => {
+  const isSameUrl = () => {
     const { pathname, search, hash } = window.location
     if (typeof href === 'string') return href === `${pathname}${search}${hash}`
 
     return pathname === href.pathname && isSameSearch(href, search) && hash === (href.hash ?? '')
-  }, [href, isSameSearch])
+  }
 
   return (
     <Link
