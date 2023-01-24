@@ -1,10 +1,10 @@
-import TablePage from '@/app/TablePage'
+import PageLayout from '@/app/PageLayout'
 import TablePageLayout from '@/ui/TablePageLayout'
 
 export default function UnitElectricityLayout({ children }: { children: React.ReactNode }) {
   return (
-    <TablePage title="Equivalent Electricity Consumption per Product">
+    <PageLayout title="Equivalent Electricity Consumption per Product">
       <TablePageLayout>{children}</TablePageLayout>
-    </TablePage>
+    </PageLayout>
   )
 }

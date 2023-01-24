@@ -1,5 +1,5 @@
-import TablePage from '../TablePage'
+import PageLayout from '../PageLayout'
 
 export default function AirCompressor() {
-  return <TablePage title="Air Compressor"></TablePage>
+  return <PageLayout title="Air Compressor"></PageLayout>
 }

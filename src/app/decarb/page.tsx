@@ -1,5 +1,5 @@
-import TablePage from '../TablePage'
+import PageLayout from '../PageLayout'
 
 export default function Decarb() {
-  return <TablePage title="Decarb"></TablePage>
+  return <PageLayout title="Decarb"></PageLayout>
 }

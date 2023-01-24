@@ -1,10 +1,10 @@
-import TablePage from '@/app/TablePage'
+import PageLayout from '@/app/PageLayout'
 import TablePageLayout from '@/ui/TablePageLayout'
 
 export default function WaterLayout({ children }: { children: React.ReactNode }) {
   return (
-    <TablePage title="Water Consumption per Billion NTD">
+    <PageLayout title="Water Consumption per Billion NTD">
       <TablePageLayout>{children}</TablePageLayout>
-    </TablePage>
+    </PageLayout>
   )
 }

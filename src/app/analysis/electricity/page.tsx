@@ -1,5 +1,5 @@
-import TablePage from '../../TablePage'
+import PageLayout from '../../PageLayout'
 
 export default function ElectricityAnalysis() {
-  return <TablePage title="Electricity Analysis"></TablePage>
+  return <PageLayout title="Electricity Analysis"></PageLayout>
 }

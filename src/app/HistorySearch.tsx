@@ -67,6 +67,7 @@ export default function HistorySearch({ year, downloadUrl }: { year: number; dow
   return (
     <div className="grid grid-cols-8 gap-4">
       <DummyDiv className="col-span-1" />
+
       <div className="col-span-6 flex w-full items-center justify-center space-x-4">
         <div className="inline-flex items-center space-x-2">
           <Select
@@ -86,6 +87,7 @@ export default function HistorySearch({ year, downloadUrl }: { year: number; dow
             onChange={(option) => setQuery({ ...query, endYear: option.key })}
           />
         </div>
+
         <div className="inline-flex items-center space-x-2">
           <Select
             id="month-type-select"
@@ -113,6 +115,7 @@ export default function HistorySearch({ year, downloadUrl }: { year: number; dow
             onChange={(option) => setQuery({ ...query, endMonth: option.key })}
           />
         </div>
+
         <Select
           id="dimension-select"
           label="Dimension : "
@@ -120,8 +123,10 @@ export default function HistorySearch({ year, downloadUrl }: { year: number; dow
           selected={getSelectedDimension()}
           onChange={(option) => setQuery({ ...query, dimension: option.key })}
         />
+
         <LinkButton href={{ pathname, query: getQuery() }}>Search</LinkButton>
       </div>
+
       <div className="col-span-1 flex w-full items-center justify-end">
         <DownloadButton
           href={`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/${downloadUrl}/download/?${qs.stringify(query)}`}

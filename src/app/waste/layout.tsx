@@ -1,10 +1,10 @@
-import TablePage from '@/app/TablePage'
+import PageLayout from '@/app/PageLayout'
 import TablePageLayout from '@/ui/TablePageLayout'
 
 export default function WasteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <TablePage title="Waste">
+    <PageLayout title="Waste">
       <TablePageLayout>{children}</TablePageLayout>
-    </TablePage>
+    </PageLayout>
   )
 }

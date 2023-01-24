@@ -13,13 +13,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
+      <body className="flex h-screen w-screen flex-col overflow-hidden">
         <Toaster />
         <NProgressRouter>
-          <div className="flex h-screen w-screen flex-col overflow-hidden">
-            <Header />
-            {children}
-          </div>
+          <Header />
+          {children}
         </NProgressRouter>
       </body>
     </html>

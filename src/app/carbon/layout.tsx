@@ -1,10 +1,10 @@
-import TablePage from '@/app/TablePage'
+import PageLayout from '@/app/PageLayout'
 import TablePageLayout from '@/ui/TablePageLayout'
 
 export default function CarbonLayout({ children }: { children: React.ReactNode }) {
   return (
-    <TablePage title="Carbon Emission">
+    <PageLayout title="Carbon Emission">
       <TablePageLayout>{children}</TablePageLayout>
-    </TablePage>
+    </PageLayout>
   )
 }

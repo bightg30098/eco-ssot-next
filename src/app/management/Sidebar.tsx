@@ -13,7 +13,7 @@ export default function Sidebar() {
   const _routes = useMemo(() => routes(), [])
 
   return (
-    <div className="col-span-1 row-span-2 flex flex-col rounded bg-primary-900 py-4 shadow">
+    <aside className="col-span-1 row-span-2 flex flex-col rounded bg-primary-900 py-4 shadow">
       <div className="mx-4 space-y-2 border-b border-b-gray-500 px-1 pb-4">
         <p className="text-primary-600">Username</p>
         <div>Whoever</div>
@@ -49,6 +49,6 @@ export default function Sidebar() {
       <div className="mx-4 border-t border-t-gray-500 px-1 pt-4 text-center">
         <Button>Logout</Button>
       </div>
-    </div>
+    </aside>
   )
 }

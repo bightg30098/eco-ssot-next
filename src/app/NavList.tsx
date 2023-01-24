@@ -21,16 +21,14 @@ export default function NavList() {
             className={({ isActive }) => clsx(isActive ? 'text-gray-50' : 'text-gray-200 hover:text-gray-100')}
           >
             {({ isActive }) => (
-              <>
-                <span
-                  className={clsx(
-                    'border-b-2 px-1 pb-1 text-lg font-medium text-current',
-                    isActive ? ' border-b-primary-600' : 'border-b-transparent',
-                  )}
-                >
-                  {label}
-                </span>
-              </>
+              <span
+                className={clsx(
+                  'border-b-2 px-1 pb-1 text-lg font-medium text-current',
+                  isActive ? ' border-b-primary-600' : 'border-b-transparent',
+                )}
+              >
+                {label}
+              </span>
             )}
           </NavLink>
         ))}
