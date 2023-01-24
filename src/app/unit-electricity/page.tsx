@@ -7,7 +7,10 @@ export default async function UnitElectricity() {
   const [unitElectricity, latestDate] = await Promise.all([getUnitElectricity(), getLatestDate()])
 
   return (
-    unitElectricity?.data &&
-    latestDate?.data && <UnitElectricityTable data={unitElectricity.data} latestDate={latestDate.data} data-superjson />
+    <>
+      {unitElectricity?.data && latestDate?.data && (
+        <UnitElectricityTable data={unitElectricity.data} latestDate={latestDate.data} data-superjson />
+      )}
+    </>
   )
 }

@@ -7,7 +7,10 @@ export default async function Overview({ searchParams }: { searchParams?: Record
   const [overview, latestDate] = await Promise.all([getOverview(searchParams), getLatestDate()])
 
   return (
-    overview?.data &&
-    latestDate?.data && <OverviewTable data={overview.data} latestDate={latestDate.data} data-superjson />
+    <>
+      {overview?.data && latestDate?.data && (
+        <OverviewTable data={overview.data} latestDate={latestDate.data} data-superjson />
+      )}
+    </>
   )
 }
