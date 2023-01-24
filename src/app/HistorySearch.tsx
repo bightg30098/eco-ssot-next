@@ -139,10 +139,16 @@ export default function HistorySearch({ year, downloadUrl }: { year: number; dow
 }
 
 const YEAR_OPTIONS = ({ year }: { year: number }) =>
-  Array.from({ length: year - MIN_YEAR + 1 }, (_, i) => ({ key: String(year - i), value: String(year - i) }))
+  Array.from({ length: year - MIN_YEAR + 1 }, (_, i) => ({
+    key: String(year - i),
+    value: String(year - i),
+  }))
 
 const MONTH_OPTIONS = () =>
-  Array.from({ length: 12 }, (_, i) => ({ key: String(i + 1), value: String(i + 1).padStart(2, '0') }))
+  Array.from({ length: 12 }, (_, i) => ({
+    key: String(i + 1),
+    value: String(i + 1).padStart(2, '0'),
+  }))
 
 const MONTH_TYPE_OPTIONS = () => [
   { key: 'YTM', value: 'Year To Month' },

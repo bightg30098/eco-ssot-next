@@ -64,7 +64,10 @@ export default function HistorySearch({ year }: { year: number }) {
 }
 
 const YEAR_OPTIONS = ({ year }: { year: number }) =>
-  Array.from({ length: year - MIN_YEAR + 1 }, (_, i) => ({ key: String(year - i), value: String(year - i) }))
+  Array.from({ length: year - MIN_YEAR + 1 }, (_, i) => ({
+    key: String(year - i),
+    value: String(year - i),
+  }))
 
 const DIMENSION_OPTIONS = () => [
   { key: 'all', value: 'ALL' },

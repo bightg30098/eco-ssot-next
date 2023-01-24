@@ -5,6 +5,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:tailwindcss/recommended',
     'plugin:storybook/recommended',
+    'prettier',
   ],
   rules: {
     '@typescript-eslint/consistent-type-imports': 'warn',
@@ -31,6 +32,7 @@ module.exports = {
       },
     ],
     curly: ['warn', 'multi-line'],
+    // 'newline-per-chained-call': ['error', { ignoreChainWithDepth: 2 }],
   },
   overrides: [
     {

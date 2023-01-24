@@ -38,7 +38,9 @@ export default function Sidebar() {
                     isActive ? 'border-l-primary-600 bg-primary-50/10' : 'border-l-transparent',
                   )
                 }
-                {...(route.pathAlias !== undefined && { hrefAlias: `/management${route.pathAlias}` })}
+                {...(route.pathAlias !== undefined && {
+                  hrefAlias: `/management${route.pathAlias}`,
+                })}
               >
                 {({ isActive }) => <span className={clsx(isActive && 'font-medium')}>{route.label}</span>}
               </NavLink>
