@@ -14,7 +14,7 @@ const logger = () => (next: FetchLike) => async (url: string, opts: WretchOption
     .json()
     .then((json) => {
       console.log([res.status], res.url)
-      console.log(JSON.stringify(json))
+      // console.log(JSON.stringify(json))
       console.log('----------------------------------------\n')
     })
 

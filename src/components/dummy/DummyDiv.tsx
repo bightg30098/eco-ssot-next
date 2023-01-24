@@ -6,5 +6,5 @@ type Props = {
 }
 
 export default function DummyDiv({ children, className }: Props) {
-  return <div className={twMerge('min-w-16 max-w-32', className)}>{children}</div>
+  return <div className={twMerge(className)}>{children}</div>
 }

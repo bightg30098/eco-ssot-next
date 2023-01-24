@@ -110,7 +110,7 @@ module.exports = {
           800: '#30494D',
           900: '#203033',
         },
-        dangerous: {
+        red: {
           ...colors.red,
           500: '#FF4E4E',
           700: '#D23B5F',

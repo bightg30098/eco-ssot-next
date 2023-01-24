@@ -3,7 +3,7 @@ import TablePageLayout from '@/ui/TablePageLayout'
 
 export default function OverviewLayout({ children }: { children: React.ReactNode }) {
   return (
-    <TablePage title="Overview">
+    <TablePage title="Electricity, Water, Revenue, and ASP">
       <TablePageLayout>{children}</TablePageLayout>
     </TablePage>
   )

@@ -24,7 +24,7 @@
     "ky": "^0.33.2",
     "lodash": "^4.17.21",
     "nanoid": "^4.0.0",
-    "next": "^13.1.4",
+    "next": "^13.1.5",
     "next-superjson-plugin": "^0.5.4",
     "nprogress": "^0.2.0",
     "overlayscrollbars": "^2.0.3",

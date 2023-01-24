@@ -50,10 +50,12 @@ export default function NavLink({ children, href, hrefAlias, className, ...props
       {...props}
       href={href}
       className={typeof className === 'function' ? className({ isActive }) : className}
-      onClick={(e) => {
-        props.onClick?.(e)
-        startChange(!isSameUrl())
-      }}
+      {...(!props.legacyBehavior && {
+        onClick: (e) => {
+          props.onClick?.(e)
+          startChange(!isSameUrl())
+        },
+      })}
     >
       {typeof children === 'function' ? children({ isActive }) : children}
     </Link>

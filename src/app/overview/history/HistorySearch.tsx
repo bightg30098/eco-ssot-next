@@ -3,7 +3,9 @@
 import { useCallback, useMemo, useState } from 'react'
 
 import { usePathname, useSearchParams } from 'next/navigation'
+import qs from 'query-string'
 
+import DownloadButton from '@/components/button/DownloadButton'
 import LinkButton from '@/components/button/LinkButton'
 import DummyDiv from '@/components/dummy/DummyDiv'
 import Select from '@/components/select/Select'
@@ -30,9 +32,9 @@ export default function HistorySearch({ year }: { year: number }) {
   )
 
   return (
-    <div className="flex items-center justify-between">
-      <DummyDiv />
-      <div className="inline-flex items-center space-x-8">
+    <div className="grid grid-cols-4 gap-4">
+      <DummyDiv className="col-span-1" />
+      <div className="col-span-2 flex w-full items-center justify-center space-x-8">
         <Select
           id="year-select"
           label="Year : "
@@ -49,9 +51,11 @@ export default function HistorySearch({ year }: { year: number }) {
         />
         <LinkButton href={{ pathname, query }}>Search</LinkButton>
       </div>
-      <LinkButton href={`${pathname}`} passHref legacyBehavior>
-        Excel
-      </LinkButton>
+      <div className="col-span-1 flex w-full items-center justify-end">
+        <DownloadButton href={`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/overall/download/?${qs.stringify(query)}`}>
+          Excel
+        </DownloadButton>
+      </div>
     </div>
   )
 }
