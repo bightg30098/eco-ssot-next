@@ -1,5 +1,5 @@
-import HistorySearch from '@/app/HistorySearch'
-import { getLatestDate } from '@/app/services'
+import HistorySearch from '../../HistorySearch'
+import { getLatestDate } from '../../services'
 
 export default async function ElectricityHistory({ searchParams }: { searchParams?: Record<string, string> }) {
   const [latestDate] = await Promise.all([getLatestDate()])

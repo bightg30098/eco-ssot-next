@@ -4,8 +4,8 @@ import { useMemo } from 'react'
 
 import clsx from 'clsx'
 
-import NavLink from '@/router/NavLink'
-import { routes } from '@/router/routes'
+import NavLink from './NavLink'
+import { routes } from './routes'
 
 export default function NavList() {
   const _routes = useMemo(() => routes(), [])

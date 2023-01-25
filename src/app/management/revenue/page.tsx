@@ -1,5 +1,3 @@
-// Description: Example page
-
-export default function Example() {
+export default function Revenue() {
   return <></>
 }

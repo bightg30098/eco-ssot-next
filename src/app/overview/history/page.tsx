@@ -1,5 +1,4 @@
-import { getLatestDate } from '@/app/services'
-
+import { getLatestDate } from '../../services'
 import OverviewTable from '../OverviewTable'
 import { getOverviewHistory } from '../services'
 

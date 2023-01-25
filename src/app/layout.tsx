@@ -1,7 +1,7 @@
 import { Toaster } from '@/lib/react-hot-toast'
-import NProgressRouter from '@/router/NProgressRouter'
 
 import Header from './Header'
+import NProgressRouter from './NProgressRouter'
 
 import '@/styles/globals.css'
 

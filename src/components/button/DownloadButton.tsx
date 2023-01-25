@@ -1,5 +1,3 @@
-'use client'
-
 import { twMerge } from 'tailwind-merge'
 
 type Props = {

@@ -1,7 +1,5 @@
 'use client'
 
-import { useCallback } from 'react'
-
 import Badge from '@/components/badge/Badge'
 import LinkButtonGroup from '@/components/button-group/LinkButtonGroup'
 import DummyDiv from '@/components/dummy/DummyDiv'
@@ -9,18 +7,11 @@ import Legend from '@/components/legend/Legend'
 
 import TablePanel from './TablePanel'
 
-const OPTIONS = ({ basePathname }: { basePathname: string | null }) => [
-  { key: 'current', value: 'Current Year', href: `${basePathname}` },
-  { key: 'history', value: 'History Years', href: `${basePathname}/history` },
-]
-
 export default function TablePageLayout({ children }: { children: React.ReactNode }) {
-  const getOptions = useCallback((basePathname: string | null) => OPTIONS({ basePathname }), [])
-
   return (
     <>
       <TablePanel>
-        {({ isHistory, basePathname }) => (
+        {({ isHistory, basePathname, getOptions }) => (
           <>
             <div className="grid grid-cols-3 items-center gap-4">
               <DummyDiv className="col-span-1" />

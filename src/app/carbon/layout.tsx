@@ -1,5 +1,5 @@
-import PageLayout from '@/app/PageLayout'
-import TablePageLayout from '@/ui/TablePageLayout'
+import PageLayout from '../PageLayout'
+import TablePageLayout from '../TablePageLayout'
 
 export default function CarbonLayout({ children }: { children: React.ReactNode }) {
   return (

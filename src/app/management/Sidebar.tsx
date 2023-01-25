@@ -5,7 +5,8 @@ import { useMemo } from 'react'
 import clsx from 'clsx'
 
 import Button from '@/components/button/Button'
-import NavLink from '@/router/NavLink'
+
+import NavLink from '../NavLink'
 
 import { routes } from './routes'
 
@@ -15,15 +16,15 @@ export default function Sidebar() {
   return (
     <aside className="col-span-1 row-span-2 flex flex-col rounded bg-primary-900 py-4 shadow">
       <div className="mx-4 space-y-2 border-b border-b-gray-500 px-1 pb-4">
-        <p className="text-primary-600">Username</p>
+        <div className="text-primary-600">Username</div>
         <div>Whoever</div>
       </div>
       <div className="mx-4 space-y-2 border-b border-b-gray-500 px-1 py-4">
-        <p className="text-primary-600">ID</p>
+        <div className="text-primary-600">ID</div>
         <div>3345678</div>
       </div>
       <div className="mx-4 space-y-2 border-b border-b-gray-500 px-1 py-4">
-        <p className="text-primary-600">Permission</p>
+        <div className="text-primary-600">Permission</div>
         <div>management / dev / normal</div>
       </div>
       <nav className="grow overflow-auto py-4">

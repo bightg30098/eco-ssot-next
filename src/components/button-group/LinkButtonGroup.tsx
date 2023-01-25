@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import clsx from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
-import NavLink from '@/router/NavLink'
+import NavLink from '@/app/NavLink'
 
 type LinkButtonGroupOption = {
   key: string
