@@ -1,3 +1,14 @@
 #nprogress .bar {
-  @apply h-1;
+  background: #3b82f6;
+  height: 4px;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  box-shadow: 0 0 10px #3b82f6, 0 0 5px #3b82f6;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #3b82f6;
+  border-left-color: #3b82f6;
 }

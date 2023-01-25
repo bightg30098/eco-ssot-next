@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge'
 
-import NavLink from '@/app/NavLink'
+import NavLink from '@/router/NavLink'
 
 import type { LinkProps } from 'next/link'
 

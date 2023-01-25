@@ -1,6 +1,6 @@
 import Logo from '@/components/logo/Logo'
+import NavLink from '@/router/NavLink'
 
-import NavLink from './NavLink'
 import NavList from './NavList'
 
 export default function Header() {
